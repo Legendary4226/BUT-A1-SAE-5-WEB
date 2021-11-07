@@ -1,0 +1,33 @@
+/* Premier set de couleurs 
+https://colorhunt.co/palette/1d2d50133b5c1e5f74fcdab7
+
+body {
+    --main-color: #1D2D50;
+    --secondary-color: #133B5C;
+    --complementary-color: #1E5F74;
+    --text-color: #FCDAB7;
+}
+*/
+
+
+/* Deuxième set de couleurs
+https://colorhunt.co/palette/0f044c141e61787a91eeeeee
+
+body {
+    --main-color: #0F044C;
+    --secondary-color: #141E61;
+    --complementary-color: #787A91;
+    --text-color: #EEEEEE;
+}
+*/
+
+
+/* Troisième set de couleurs
+https://colorhunt.co/palette/222831393e46d65a31eeeeee
+*/
+body {
+    --main-color: #222831;
+    --secondary-color: #393E46;
+    --complementary-color: #D65A31;
+    --text-color: #EEEEEE;
+}
