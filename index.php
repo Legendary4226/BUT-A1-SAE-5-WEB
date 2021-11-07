@@ -4,21 +4,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BUT Informatique Lyon1</title>
     <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="sass/index.css">
+    <link rel="stylesheet" href="sass/error404.css">
 </head>
 <body>
     <main>
-        <!-- Importation du menu de gauche pour naviguer sur le contenu -->
-        <?php
+        <!-- Menu de gauche pour naviguer sur le contenu -->
         
-        ?>
 
 
         <!-- Importation du contenu -->
         <?php
-        if (isset($GET["page"])) {
-
+        if (isset($_GET['page'])) {
+            switch ($_GET['page']) {
+                case 'index':
+                    include("pages/contenu1.html");
+                    break;
+                case 'arround':
+                    include("pages/contenu2.html");
+                    break;
+                case 'but':
+                    include("pages/contenu3.html");
+                    break;
+                case 'question-form':
+                    include("pages/formulaire.html");
+                    break;
+                default:
+                    include("pages/error404.html");
+            }
         } else {
-            include("contenu1.html");
+            include("pages/contenu1.html");
         }
         ?>
 
@@ -29,7 +44,7 @@
 
         <!-- Importation du FOOTER -->
         <?php
-        include("footer.html");
+        include("pages/footer.html");
         ?>
     </main>
 </body>

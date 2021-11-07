@@ -1,0 +1,158 @@
+.error404 {
+    width: 100vw;
+    min-height: 100vh;
+    position: absolute;
+    z-index: 50;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--main-color);
+}
+
+button {
+    position: fixed;
+    left: 2rem;
+    top: 2rem;
+
+    padding: 0.5rem;
+    cursor: pointer;
+
+    background-color: var(--main-color);
+    border: none;
+
+    box-shadow: 0 0 5px var(--text-color);
+    border-radius: 1rem;
+
+    color: var(--text-color);
+
+    transition: background-color 200ms, transform 500ms, box-shadow 500ms;
+    transition-timing-function: cubic-bezier(.37,1.8,.95,.66);
+
+    &:hover {
+        background-color: var(--complementary-color);
+        transform: scale(1.2);
+    }
+    &:active {
+        box-shadow: 0 0 15px var(--text-color);
+    }
+}
+
+
+@keyframes fall {
+    from, 50% {
+        opacity: 0;
+        transform: translateY(-25vh);
+    }
+    // Fairee tomber
+    75% {
+        transform: translateY(0) scaleY(1);
+    }
+    // Donner l'impression d'écrasement
+    80% {
+        transform: translateY(30%) scaleY(0.7);
+    }
+    // Revenir à l'état normal
+    85% {
+        transform: translateY(0) scaleY(1);
+    }
+    // Rebondir
+    90% {
+        opacity: 1;
+        transform: translateY(-5vh) scaleY(1);
+    }
+    // Se poser, enfin
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes appear {
+    from, 25% {
+        opacity: 0;
+    }
+}
+
+@keyframes slide-from-left {
+    from, 50% {
+        transform: translateX(-50%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes slide-from-right {
+    from, 50% {
+        transform: translateX(50%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes shine {
+    from, 25% {
+        opacity: 0;
+        filter: brightness(1.5) contrast(200%);
+    }
+    60% {
+        filter: brightness(0.8) contrast(80%);
+    }
+    to {
+        opacity: 1;
+        filter: brightness(1.2) contrast(200%);
+    }
+}
+
+
+svg {
+    padding: 5rem 10rem;
+    box-shadow: 0 0 5px var(--text-color);
+    border-radius: 2rem;
+
+    & #back {
+        opacity: 0.5;
+        animation: appear 2.5s;
+    }
+    & #left-four {
+        animation: fall 1.6s cubic-bezier(.96,.46,.97,.48) forwards;
+        opacity: 0;
+    }
+    & #right-four {
+        animation: fall 1.5s cubic-bezier(.96,.46,.97,.48) forwards;
+        animation-delay: 200ms;
+        opacity: 0;
+    }
+    & #zero {
+        animation: fall 1.5s cubic-bezier(.96,.46,.97,.48) forwards;
+        animation-delay: 400ms;
+        opacity: 0;
+    }
+    & #cloud1 {
+        animation: slide-from-left 1.8s;
+    }
+    & #cloud2 {
+        animation: slide-from-right 1.8s;
+    }
+    & #sun {
+        animation: shine 2s infinite;
+    }
+
+    @media (min-width: 640px) and (max-width: 1500px) {
+        width: 95vw;
+        height: 60vh;
+        padding: 2rem 0;
+    }
+    @media (max-width: 640px) {
+        width: 95vw;
+        height: 35vh;
+        padding: 2rem 0;
+    }
+}
