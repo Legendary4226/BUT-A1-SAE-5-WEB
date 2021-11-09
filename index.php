@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/colors.css">
     <link rel="stylesheet" href="sass/index.css">
     <link rel="stylesheet" href="sass/error404.css">
+    <link rel="stylesheet" href="css/footer.css">
 </head>
 
 <body>

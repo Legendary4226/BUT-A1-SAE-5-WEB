@@ -1,1 +1,9 @@
-@import url("colors.css");
+footer{
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
+}
+section{
+    display: flex;
+    flex-direction: column;
+}
