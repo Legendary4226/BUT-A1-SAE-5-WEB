@@ -12,22 +12,22 @@
     if (isset($_GET['page'])) {
         switch ($_GET['page']) {
             case 'index':
-                include("css/contenu1.css");
+                echo '<link rel="stylesheet" href="css/contenu1.css">';
                 break;
             case 'arround':
-                include("css/contenu2.css");
+                echo '<link rel="stylesheet" href="css/contenu2.css">';
                 break;
             case 'but':
-                include("css/contenu3.css");
+                echo '<link rel="stylesheet" href="css/contenu3.css">';
                 break;
             case 'question-form':
-                include("css/formulaire.css");
+                echo '<link rel="stylesheet" href="css/formulaire.css">';
                 break;
             default:
-                include("sass/error404.css");
+                echo '<link rel="stylesheet" href="sass/error404.css">';
         }
     } else {
-        include("css/contenu1.css");
+        echo '<link rel="stylesheet" href="css/contenu1.css">';
     }
     ?>
 
