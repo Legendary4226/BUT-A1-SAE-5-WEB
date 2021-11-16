@@ -6,8 +6,30 @@
     <title>BUT Informatique Lyon1</title>
     <link rel="stylesheet" href="css/colors.css">
     <link rel="stylesheet" href="sass/index.css">
-    <link rel="stylesheet" href="sass/error404.css">
     <link rel="stylesheet" href="css/footer.css">
+
+    <?php
+    if (isset($_GET['page'])) {
+        switch ($_GET['page']) {
+            case 'index':
+                include("css/contenu1.css");
+                break;
+            case 'arround':
+                include("css/contenu2.css");
+                break;
+            case 'but':
+                include("css/contenu3.css");
+                break;
+            case 'question-form':
+                include("css/formulaire.css");
+                break;
+            default:
+                include("sass/error404.css");
+        }
+    } else {
+        include("css/contenu1.css");
+    }
+    ?>
 
     <script src="js/top-menu.js"></script>
 </head>
@@ -38,7 +60,7 @@
                         <p>Menu</p>
                     </div>
                     <div class="back">
-
+                        <a href="?page=404">Formulaire</a>
                     </div>
                     <div class="left">
                         <a href="?page=index">But en général</a> 
@@ -50,7 +72,7 @@
                         <a href="?page=but">Le BUT Informatique</a>
                     </div>
                     <div class="bottom">
-                    <a href="?page=404">Formulaire</a>
+                    
                     </div>
                 </div>
             </div>
