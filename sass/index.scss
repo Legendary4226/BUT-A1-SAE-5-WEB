@@ -22,41 +22,48 @@ main {
     max-width: 100vw;
     min-height: 100vh;
 
-    display: grid;
-    grid-template-columns: 15vw 1fr;
+    display: flex;
+    justify-content: center;
+
+    padding-right: 15vw;
+    padding-left: 15vw;
 }
 
 
 
 nav.sub-left-menu {
-    min-height: 100vh;
+    height: 100vh;
+    width: 15vw;
+
+    position: fixed;
+    left: 0;
+    transform: translateX(-80%);
 
     background-color: var(--secondary-color);
 
-    position: relative;
+    transition: all 0.8s;
 
-    &::after {
-        content: "<< PLAN";
-        display: block;
+    border-radius: 0 20% 20% 0;
 
-        position: absolute;
-        top: 0;
-        left: 100%;
-
-
-        width: 111px;
-
-        padding: 0.5rem;
-        background-color: var(--secondary-color);
-        border-radius: 0 0 0.5rem 0;
+    &:hover {
+        transform: translateX(0);
+        border-radius: 0;
+    }
+    &:hover + section.content {
+        transform: translateX(10%);
     }
 }
+
+section.content {
+    transition: transform 0.8s;
+}
+
 
 nav.top-menu {
     z-index: 30;
 
     & #slide-menu {
-        position: absolute;
+        position: fixed;
         top: 75px;
         right: 0;
 
@@ -159,11 +166,17 @@ nav.top-menu div.button-menu {
                 transform: translateZ(-25px) rotateX(270deg);
                 transform-origin: center bottom;
             }
+
+            & a {
+                opacity: 0;
+                visibility: hidden;
+            }
         }
     }
 
     // Le cube quand hover
     & div.menu-cube:hover {
+        transform: rotateY(0deg) rotateX(0deg);
         & div {
             background-color: var(--complementary-color);
 
@@ -174,7 +187,8 @@ nav.top-menu div.button-menu {
                 
             }
             &.left {
-                
+                transform: translateZ(50px) rotateY(360deg) translateX(calc(-20vw + 4rem));
+                width: 5vw;
             }
             &.right {
                 
@@ -187,7 +201,11 @@ nav.top-menu div.button-menu {
             }
 
         }
-        
+        & a {
+            opacity: 1;
+            visibility: visible;
+        }
+
     }
     & div.menu-on {
         transform: rotateX(0deg) rotateY(30deg) rotateZ(0deg);

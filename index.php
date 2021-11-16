@@ -19,27 +19,39 @@
             <div id="slide-menu">
                 <ul>
                     <li>
-                        <a href="?page=index">But en général</a>    
+                           
                     </li>
                     <li>
-                        <a href="?page=arround">Autour de l'IUT</a>
+                        
                     </li>
                     <li>
-                        <a href="?page=but">Le BUT Informatique</a>
+                        
                     </li>
                     <li>
-                        <a href="?page=404">Formulaire</a>
+                        
                     </li>
                 </ul>
             </div>
             <div class="button-menu">
                 <div onClick="toggle_top_menu()" id="cube-3D" class="menu-cube">
-                    <div class="front"><p>Menu</p></div>
-                    <div class="back"></div>
-                    <div class="left"></div>
-                    <div class="right"></div>
-                    <div class="top"></div>
-                    <div class="bottom"></div>
+                    <div class="front">
+                        <p>Menu</p>
+                    </div>
+                    <div class="back">
+
+                    </div>
+                    <div class="left">
+                        <a href="?page=index">But en général</a> 
+                    </div>
+                    <div class="right">
+                        <a href="?page=arround">Autour de l'IUT</a>
+                    </div>
+                    <div class="top">
+                        <a href="?page=but">Le BUT Informatique</a>
+                    </div>
+                    <div class="bottom">
+                    <a href="?page=404">Formulaire</a>
+                    </div>
                 </div>
             </div>
         </nav>
