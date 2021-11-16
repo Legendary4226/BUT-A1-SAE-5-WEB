@@ -2,6 +2,8 @@
     width: 100vw;
     min-height: 100vh;
     position: absolute;
+    top: 0;
+    left: 0;
     z-index: 50;
 
     display: flex;
@@ -12,12 +14,15 @@
     background-color: var(--main-color);
 }
 
-button {
+.error404 button {
     position: fixed;
     left: 2rem;
     top: 2rem;
 
-    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+
+    padding: 0.6rem;
     cursor: pointer;
 
     background-color: var(--main-color);
@@ -27,6 +32,8 @@ button {
     border-radius: 1rem;
 
     color: var(--text-color);
+    font-size: 1em;
+    text-align: center;
 
     transition: background-color 200ms, transform 500ms, box-shadow 500ms;
     transition-timing-function: cubic-bezier(.37,1.8,.95,.66);
@@ -37,6 +44,11 @@ button {
     }
     &:active {
         box-shadow: 0 0 15px var(--text-color);
+    }
+
+    & img {
+        height: 1.5em;
+        margin-right: 0.5rem;
     }
 }
 
@@ -142,7 +154,7 @@ svg {
         animation: slide-from-right 1.8s;
     }
     & #sun {
-        animation: shine 2s infinite;
+        animation: shine 2s;
     }
 
     @media (min-width: 640px) and (max-width: 1500px) {
