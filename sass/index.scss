@@ -27,6 +27,8 @@ main {
 
     padding-right: 15vw;
     padding-left: 15vw;
+
+
 }
 
 
@@ -42,294 +44,224 @@ main {
     }
 }
 nav.sub-left-menu {
-    height: calc(100vh - 4rem);
-    width: 15vw;
+    //Au premier plan
+    z-index: 50;
 
-    padding: 2rem 2rem 2rem 0;
+    height: 100vh;
+    width: 15rem;
 
     position: fixed;
     top: 0;
     left: 0;
-    transform: translateX(-80%);
+    transform: translateX(-85%);
 
-    background: var(--main-color);
+    background: var(--text-color);
+    opacity: 0.2;
 
-    transition: all 0.7s cubic-bezier(.62,.24,.86,1.01);
+    transition: 0.5s cubic-bezier(.16,.77,.9,.88);
+    transition-property: transform border-radius opacity;
 
-    border-radius: 0 5rem 5rem 0;
+    border-radius: 0 90% 90% 0;
 
     display: flex;
     flex-direction: column;
-    flex-basis: fit-content;
+    align-items: center;
+
+    & h1, ul {
+        opacity: 0;
+        transition: opacity 0.25s;
+        // Effet d'apparition soudaine du texte
+        transition-delay: 0.25s;
+    }
+
+    & h1 {
+        margin: 2rem 0 2rem 0;
+        color: var(--main-color);
+    }
 
     & ul {
+        width: 100%;
+        height: 80%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+
+        & li {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            // Espacer les lignes
+            line-height: 1.3;
+
+            // Placer les pseudo éléments en fonction de leur parent
+            position: relative;
+
+            & a {
+                text-decoration: none;
+                color: var(--secondary-color);
+
+                padding-top: 1rem;
+                transition: 0.5s;
+            }
+            & a:hover {
+                text-shadow: 0 0 2px var(--secondary-color);
+            }
+
+            // Barre verte en dessous
+            & a::after {
+                content: '';
+                display: block;
+
+                position: absolute;
+                top: calc(100% + 5px);
+
+                width: 100%;
+                height: 3px;
+                background-color: var(--complementary-color);
+
+                transform: scaleX(0);
+
+                animation: bouncy-bar-return 0.5s cubic-bezier(.83,1.19,.69,.85);
+            }
+            & a:hover::after {
+                animation: bouncy-bar 0.5s forwards cubic-bezier(.83,1.19,.69,.85);
+            }
+        }
+    }
+
+    @keyframes bouncy-bar {
+        from {
+            transform: scaleX(0);
+        }
+        50% {
+            transform: scaleX(1);
+        }
+        75% {
+            transform: scaleX(0.8);
+        }
+        to {
+            transform: scaleX(1);
+        }
+    }
+    @keyframes bouncy-bar-return {
+        from {
+            transform: scaleX(1);
+        }
+        50% {
+            transform: scaleX(0);
+        }
+        75% {
+            transform: scaleX(0.2);
+        }
+        to {
+            transform: scaleX(0);
+        }
     }
 
     &:hover {
         transform: translateX(0);
-        border-radius: 0;
-    }
-    &:hover + section.content {
-        transform: translateX(10%);
+        border-radius: 0 1% 1% 0;
+        opacity: 0.6;
+
+        & h1, ul {
+            opacity: 1;
+        }
     }
 }
 
 section.content {
-    transition: transform 0.7s cubic-bezier(.62,.24,.86,1.01);
+    // Deuxième plan
+    z-index: 25;
 }
 
 
 nav.top-menu {
     // Etre sûr que le menu sera devant le reste
-    z-index: 30;
+    z-index: 50;
 }
 
 
 // --------------------- Cube 3D
-@keyframes faces {
-    from {
-        opacity: 0;
-    }
-    50% {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-nav.top-menu div.button-menu {
+nav.top-menu {
     position: fixed;
-    top: 75px;
-    right: 4rem;
-    transform: translateY(-50%);
+    top: 0;
+    right: 4.5rem;
 
-    height: 50px;
+    width: 8rem;
+    height: 90vh;
+    padding: 2.5rem 0;
 
-    border: none;
-    background-color: transparent;
-
+    // Définir la perspective pour le cube
     perspective: 800px;
-    perspective-origin: center;
 
-    // Le cube
-    & div.menu-cube {
-        --cube-lenght: 58px;
-        --half-cube-lenght: calc(var(--cube-lenght)/2);
-        --half-cube-lenght-negative: calc(var(--half-cube-lenght) * -1);
+    & ul, div.menu-cube {
+        margin-top: 70px;
+        position: absolute;
 
-        position: relative;
-        width: var(--cube-lenght);
-        height: var(--cube-lenght);
+        height: calc(100% - 2.5rem - 2.5rem - 70px);
+        width: 100%;
 
-        transform-style: preserve-3d;
-        transform-origin: center 50%;
-        transform: rotateY(-15deg) rotateX(10deg);
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        align-items: center;
+    }
 
-        transition: all 1s;
-        transition-delay: 250ms;
+    // Partie des liens
+    & ul {
 
-        cursor: pointer;
-
-        // Les faces du cube
-        & div {
-            position: absolute;
-            width: var(--cube-lenght);
-            height: var(--cube-lenght);
+        & li {
+            height: 100px;
+            width: 100px;
 
             display: flex;
             justify-content: center;
             align-items: center;
-
-            transition: all 1s;
-
-            box-shadow: 0 0 4px var(--text-color), inset 0 0 4px var(--text-color);
-
-            &.front {
-                transform: translateZ(var(--half-cube-lenght));
-            }
-            &.back {
-                transform: translateZ(var(--half-cube-lenght-negative)) rotateY(180deg);
-            }
-            &.left {
-                transform: translateZ(var(--half-cube-lenght-negative)) rotateY(270deg);
-                transform-origin: center left;
-            }
-            &.right {
-                transform: translateZ(var(--half-cube-lenght-negative)) rotateY(90deg);
-                transform-origin: center right;
-            }
-            &.top {
-                transform: translateZ(var(--half-cube-lenght-negative)) rotateX(90deg);
-                transform-origin: center top;
-            }
-            &.bottom {
-                transform: translateZ(var(--half-cube-lenght-negative)) rotateX(270deg);
-                transform-origin: center bottom;
-            }
+            
+            list-style-type: none;
 
             & a {
-                opacity: 0;
-                visibility: hidden;
-
-                transition: 1s all;
-
+                text-decoration: none;
+                color: var(--text-color);
                 text-align: center;
             }
         }
     }
 
-    // Le cube quand hover
-    & div.hover-anim-on:hover {
-        transform: rotateY(0deg) rotateX(0deg);
-        & div {
 
-            &.back {
-                animation: back-face-hover 1.2s forwards cubic-bezier(.77,.24,.04,.6);
-            }
-            &.left {
-                animation: left-face-hover 1.2s forwards cubic-bezier(.77,.24,.04,.6);
-            }
-            &.right {
-                animation: right-face-hover 1.2s forwards cubic-bezier(.77,.24,.04,.6);
-            }
-            &.top {
-                animation: top-face-hover 1.2s forwards cubic-bezier(.77,.24,.04,.6);
-            }
-            &.bottom {
-                animation: bottom-face-hover 1.2s forwards cubic-bezier(.77,.24,.04,.6);
-            }
-
-        }
-
-    }
-
-    // Le cube le menu est on
-    & div.menu-on {
-        transform: rotateY(0deg) rotateX(0deg);
+    // Partie de l'animation (le cube 3D)
+    & div.menu-cube {
+        // Activer la 3D sur les éléments
+        transform-style: preserve-3d;
+        transform-origin: center 50%;
 
         & div {
-            background-color: var(--complementary-color);
+            width: 100px;
+            height: 100px;
+            box-shadow: 0 0 5px var(--text-color);
 
-            &:not(.front) {
-                width: 200%;
-            }
-
-            &.right {
-                transform: translateZ(var(--half-cube-lenght)) translateX(calc(4rem - 10vw)) rotateY(0deg);
-            }
-            &.left {
-                transform: translateZ(var(--half-cube-lenght)) translateX(calc(4rem - 25vw)) rotateY(0deg);
-            }
-            &.top {
-                transform: translateZ(var(--half-cube-lenght)) translateX(calc(4rem - 40vw)) rotateY(0deg);
-            }
-            &.bottom {
-                transform: translateZ(var(--half-cube-lenght)) translateY(0px) translateX(calc(4rem - 55vw));
+            &.front {
+                position: absolute;
+                top: 0;
+                left: 0;
             }
             &.back {
-                transform: translateZ(var(--half-cube-lenght)) translateX(calc(4rem - 70vw)) rotateY(0deg);
-            }
 
-            & a {
-                opacity: 1;
-                visibility: visible;
+            }
+            &.left {
+
+            }
+            &.right {
+
+            }
+            &.top {
+
+            }
+            &.bottom {
+
             }
         }
-    }
-
-    // Pseudo élément permettant de faire office de fond
-    & div.menu-cube::before {
-        content: '';
-        display: inline-block;
-
-        position: absolute;
-        right: 0;
-        transform: translateY(-25%) translateX(5vw);
-        
-
-        height: 100px;
-        width: 100vw;
-
-        background-color: var(--main-color);
-        opacity: 0;
-        visibility: hidden;
-    }
-    // Afficher le fond quand l'animation se termine
-    & div.menu-cube:hover::before, div.menu-on::before {
-        animation: back-menu-show 2s forwards;
-    }
-}
-
-a {
-    text-decoration: none;
-    color: var(--text-color);
-}
-
-// Animer les faces du cude à l'hover
-@keyframes right-face-hover {
-    from {
-        transform: translateZ(var(--half-cube-lenght-negative)) rotateY(90deg);
-    }
-    45% {
-        transform: translateZ(-25px) translateX(25px) rotateY(90deg);
-    }
-    to {
-        transform: translateZ(50px) translateX(calc(4rem - 10vw)) rotateY(0deg);
-    }
-}
-@keyframes left-face-hover {
-    from {
-        transform: translateZ(var(--half-cube-lenght-negative)) rotateY(270deg);
-    }
-    45% {
-        transform: translateZ(-50px) translateX(-25px) rotateY(270deg);
-    }
-    to {
-        transform: translateZ(50px) translateX(calc(4rem - 25vw)) rotateY(0deg);
-    }
-}
-@keyframes top-face-hover {
-    from {
-        transform: translateZ(var(--half-cube-lenght-negative)) rotateX(90deg);
-    }
-    45% {
-        transform: translateZ(-50px) translateY(-25px) rotateX(90deg);
-    }
-    to {
-        transform: translateZ(50px) translateX(calc(4rem - 40vw)) rotateY(0deg);
-    }
-}
-@keyframes bottom-face-hover {
-    from {
-        transform: translateZ(var(--half-cube-lenght-negative)) rotateX(270deg);
-    }
-    45% {
-        transform: translateZ(-50px) translateY(25px) rotateX(270deg);
-    }
-    to {
-        transform: translateZ(50px) translateY(0px) translateX(calc(4rem - 55vw));
-    }
-}
-@keyframes back-face-hover {
-    from {
-        transform: translateZ(var(--half-cube-lenght-negative)) rotateY(180deg);
-    }
-    45% {
-        transform: translateZ(-50px) rotateY(180deg);
-    }
-    to {
-        transform: translateZ(50px) translateX(calc(4rem - 70vw)) rotateY(0deg);
-    }
-}
-
-// Animer le fond du cude à l'hover
-@keyframes back-menu-show {
-    50% {
-        opacity: 0;
-    }
-    to {
-        opacity: 0.9;
-        visibility: visible;
     }
 }

@@ -38,35 +38,45 @@
 
     <!-- Menu fixe pour naviguer entre pages -->
     <nav class="top-menu">
-            <div class="button-menu">
-                <div onClick="toggle_top_menu()" id="cube-3D" class="menu-cube hover-anim-on">
-                    <div class="front">
-                        <p>Menu</p>
-                    </div>
-                    <div class="back">
-                        <a href="?page=404">Formulaire</a>
-                    </div>
-                    <div class="left">
-                        <a href="?page=index">But en général</a> 
-                    </div>
-                    <div class="right">
-                        <a href="?page=arround">Autour de l'IUT</a>
-                    </div>
-                    <div class="top">
-                        <a href="?page=but">Le BUT Informatique</a>
-                    </div>
-                    <div class="bottom">
-                    
-                    </div>
-                </div>
+
+        <div onClick="toggle_top_menu()" id="cube-3D" class="menu-cube hover-anim-on">
+            <!--
+            <div class="front">
+                <p>Menu</p>
             </div>
-        </nav>
+            -->
+
+            <div class="back"></div>
+            <div class="left"></div>
+            <div class="right"></div>
+            <div class="top"></div>
+            <div class="bottom"></div>
+        </div>
+
+        <ul>
+            <li>
+                <a href="?page=index">But en général</a> 
+            </li>
+            <li>
+                <a href="?page=arround">Autour de l'IUT</a>
+            </li>
+            <li>
+                <a href="?page=but">Le BUT Info</a>
+            </li>
+            <li>
+                <a href="?page=404">Formulaire</a>
+            </li>
+            <li>
+                <a href="?page=error404">Page d'erreur</a>
+            </li>
+        </ul>
+    </nav>
 
     <main>
         <!-- Menu de gauche pour naviguer sur le contenu -->
         <nav class="sub-left-menu">
             <h1>
-                Liens rapides
+                Navigation
             </h1>
             <?php
             if (isset($_GET['page'])) {
