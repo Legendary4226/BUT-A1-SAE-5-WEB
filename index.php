@@ -38,24 +38,8 @@
 
     <!-- Menu fixe pour naviguer entre pages -->
     <nav class="top-menu">
-            <div id="slide-menu">
-                <ul>
-                    <li>
-                           
-                    </li>
-                    <li>
-                        
-                    </li>
-                    <li>
-                        
-                    </li>
-                    <li>
-                        
-                    </li>
-                </ul>
-            </div>
             <div class="button-menu">
-                <div onClick="toggle_top_menu()" id="cube-3D" class="menu-cube">
+                <div onClick="toggle_top_menu()" id="cube-3D" class="menu-cube hover-anim-on">
                     <div class="front">
                         <p>Menu</p>
                     </div>
@@ -81,6 +65,9 @@
     <main>
         <!-- Menu de gauche pour naviguer sur le contenu -->
         <nav class="sub-left-menu">
+            <h1>
+                Liens rapides
+            </h1>
             <?php
             if (isset($_GET['page'])) {
                 switch ($_GET['page']) {

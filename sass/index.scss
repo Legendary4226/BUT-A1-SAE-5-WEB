@@ -11,7 +11,7 @@
 
 
 body {
-    background-color: var(--main-color);
+    background-color: var(--secondary-color);
     overflow-x: hidden;
 
     font-family: 'Roboto Mono', monospace;
@@ -30,20 +30,40 @@ main {
 }
 
 
-
+@keyframes show-left-submenu {
+    from {
+        box-shadow: 0 0 0px var(--text-color);
+    }
+    10% {
+        box-shadow: 0 0 15px var(--text-color);
+    }
+    20% {
+        box-shadow: 0 0 0px var(--text-color);
+    }
+}
 nav.sub-left-menu {
-    height: 100vh;
+    height: calc(100vh - 4rem);
     width: 15vw;
 
+    padding: 2rem 2rem 2rem 0;
+
     position: fixed;
+    top: 0;
     left: 0;
     transform: translateX(-80%);
 
-    background-color: var(--secondary-color);
+    background: var(--main-color);
 
-    transition: all 0.8s;
+    transition: all 0.7s cubic-bezier(.62,.24,.86,1.01);
 
-    border-radius: 0 20% 20% 0;
+    border-radius: 0 5rem 5rem 0;
+
+    display: flex;
+    flex-direction: column;
+    flex-basis: fit-content;
+
+    & ul {
+    }
 
     &:hover {
         transform: translateX(0);
@@ -55,51 +75,27 @@ nav.sub-left-menu {
 }
 
 section.content {
-    transition: transform 0.8s;
+    transition: transform 0.7s cubic-bezier(.62,.24,.86,1.01);
 }
 
 
 nav.top-menu {
+    // Etre sûr que le menu sera devant le reste
     z-index: 30;
-
-    & #slide-menu {
-        position: fixed;
-        top: 75px;
-        right: 0;
-
-        width: 60vw;
-        height: 70px;
-
-        transform: translateX(100%) translateY(-50%);
-        
-        background-color: var(--complementary-color);
-
-        transition: all 1s;
-
-        & ul {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-
-            height: 100%;
-
-            & li {
-                list-style-type: none;
-            }
-        }
-    }
-
-    & #slide-menu.slide-menu-on {
-        transform: translateX(0) translateY(-50%);
-    }
 }
 
 
-
-
-// Cube 3D
-@keyframes hover-cube {
-    
+// --------------------- Cube 3D
+@keyframes faces {
+    from {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 nav.top-menu div.button-menu {
@@ -118,107 +114,222 @@ nav.top-menu div.button-menu {
 
     // Le cube
     & div.menu-cube {
+        --cube-lenght: 58px;
+        --half-cube-lenght: calc(var(--cube-lenght)/2);
+        --half-cube-lenght-negative: calc(var(--half-cube-lenght) * -1);
+
         position: relative;
-        width: 50px;
-        height: 50px;
+        width: var(--cube-lenght);
+        height: var(--cube-lenght);
 
         transform-style: preserve-3d;
-        transform-origin: center 25px;
+        transform-origin: center 50%;
         transform: rotateY(-15deg) rotateX(10deg);
 
         transition: all 1s;
+        transition-delay: 250ms;
 
         cursor: pointer;
 
         // Les faces du cube
         & div {
             position: absolute;
-            width: 50px;
-            height: 50px;
+            width: var(--cube-lenght);
+            height: var(--cube-lenght);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
             transition: all 1s;
 
             box-shadow: 0 0 4px var(--text-color), inset 0 0 4px var(--text-color);
 
             &.front {
-                transform: translateZ(25px);
-
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                transform: translateZ(var(--half-cube-lenght));
             }
             &.back {
-                transform: translateZ(-25px) rotateY(180deg);
+                transform: translateZ(var(--half-cube-lenght-negative)) rotateY(180deg);
             }
             &.left {
-                transform: translateZ(-25px) rotateY(270deg);
+                transform: translateZ(var(--half-cube-lenght-negative)) rotateY(270deg);
                 transform-origin: center left;
             }
             &.right {
-                transform: translateZ(-25px) rotateY(90deg);
+                transform: translateZ(var(--half-cube-lenght-negative)) rotateY(90deg);
                 transform-origin: center right;
             }
             &.top {
-                transform: translateZ(-25px) rotateX(90deg);
+                transform: translateZ(var(--half-cube-lenght-negative)) rotateX(90deg);
                 transform-origin: center top;
             }
             &.bottom {
-                transform: translateZ(-25px) rotateX(270deg);
+                transform: translateZ(var(--half-cube-lenght-negative)) rotateX(270deg);
                 transform-origin: center bottom;
             }
 
             & a {
                 opacity: 0;
                 visibility: hidden;
+
+                transition: 1s all;
+
+                text-align: center;
             }
         }
     }
 
     // Le cube quand hover
-    & div.menu-cube:hover {
+    & div.hover-anim-on:hover {
         transform: rotateY(0deg) rotateX(0deg);
         & div {
-            background-color: var(--complementary-color);
 
-            &.front {
-
-            }
             &.back {
-                
+                animation: back-face-hover 1.2s forwards cubic-bezier(.77,.24,.04,.6);
             }
             &.left {
-                transform: translateZ(50px) rotateY(360deg) translateX(calc(-20vw + 4rem));
-                width: 5vw;
+                animation: left-face-hover 1.2s forwards cubic-bezier(.77,.24,.04,.6);
             }
             &.right {
-                
+                animation: right-face-hover 1.2s forwards cubic-bezier(.77,.24,.04,.6);
             }
             &.top {
-                
+                animation: top-face-hover 1.2s forwards cubic-bezier(.77,.24,.04,.6);
             }
             &.bottom {
-                
+                animation: bottom-face-hover 1.2s forwards cubic-bezier(.77,.24,.04,.6);
             }
 
-        }
-        & a {
-            opacity: 1;
-            visibility: visible;
         }
 
     }
+
+    // Le cube le menu est on
     & div.menu-on {
-        transform: rotateX(0deg) rotateY(30deg) rotateZ(0deg);
+        transform: rotateY(0deg) rotateX(0deg);
 
         & div {
             background-color: var(--complementary-color);
 
-            
+            &:not(.front) {
+                width: 200%;
+            }
+
+            &.right {
+                transform: translateZ(var(--half-cube-lenght)) translateX(calc(4rem - 10vw)) rotateY(0deg);
+            }
+            &.left {
+                transform: translateZ(var(--half-cube-lenght)) translateX(calc(4rem - 25vw)) rotateY(0deg);
+            }
+            &.top {
+                transform: translateZ(var(--half-cube-lenght)) translateX(calc(4rem - 40vw)) rotateY(0deg);
+            }
+            &.bottom {
+                transform: translateZ(var(--half-cube-lenght)) translateY(0px) translateX(calc(4rem - 55vw));
+            }
+            &.back {
+                transform: translateZ(var(--half-cube-lenght)) translateX(calc(4rem - 70vw)) rotateY(0deg);
+            }
+
+            & a {
+                opacity: 1;
+                visibility: visible;
+            }
         }
+    }
+
+    // Pseudo élément permettant de faire office de fond
+    & div.menu-cube::before {
+        content: '';
+        display: inline-block;
+
+        position: absolute;
+        right: 0;
+        transform: translateY(-25%) translateX(5vw);
+        
+
+        height: 100px;
+        width: 100vw;
+
+        background-color: var(--main-color);
+        opacity: 0;
+        visibility: hidden;
+    }
+    // Afficher le fond quand l'animation se termine
+    & div.menu-cube:hover::before, div.menu-on::before {
+        animation: back-menu-show 2s forwards;
     }
 }
 
 a {
     text-decoration: none;
     color: var(--text-color);
+}
+
+// Animer les faces du cude à l'hover
+@keyframes right-face-hover {
+    from {
+        transform: translateZ(var(--half-cube-lenght-negative)) rotateY(90deg);
+    }
+    45% {
+        transform: translateZ(-25px) translateX(25px) rotateY(90deg);
+    }
+    to {
+        transform: translateZ(50px) translateX(calc(4rem - 10vw)) rotateY(0deg);
+    }
+}
+@keyframes left-face-hover {
+    from {
+        transform: translateZ(var(--half-cube-lenght-negative)) rotateY(270deg);
+    }
+    45% {
+        transform: translateZ(-50px) translateX(-25px) rotateY(270deg);
+    }
+    to {
+        transform: translateZ(50px) translateX(calc(4rem - 25vw)) rotateY(0deg);
+    }
+}
+@keyframes top-face-hover {
+    from {
+        transform: translateZ(var(--half-cube-lenght-negative)) rotateX(90deg);
+    }
+    45% {
+        transform: translateZ(-50px) translateY(-25px) rotateX(90deg);
+    }
+    to {
+        transform: translateZ(50px) translateX(calc(4rem - 40vw)) rotateY(0deg);
+    }
+}
+@keyframes bottom-face-hover {
+    from {
+        transform: translateZ(var(--half-cube-lenght-negative)) rotateX(270deg);
+    }
+    45% {
+        transform: translateZ(-50px) translateY(25px) rotateX(270deg);
+    }
+    to {
+        transform: translateZ(50px) translateY(0px) translateX(calc(4rem - 55vw));
+    }
+}
+@keyframes back-face-hover {
+    from {
+        transform: translateZ(var(--half-cube-lenght-negative)) rotateY(180deg);
+    }
+    45% {
+        transform: translateZ(-50px) rotateY(180deg);
+    }
+    to {
+        transform: translateZ(50px) translateX(calc(4rem - 70vw)) rotateY(0deg);
+    }
+}
+
+// Animer le fond du cude à l'hover
+@keyframes back-menu-show {
+    50% {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.9;
+        visibility: visible;
+    }
 }
