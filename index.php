@@ -39,12 +39,12 @@
     <!-- Menu fixe pour naviguer entre pages -->
     <nav class="top-menu">
 
-        <div onClick="toggle_top_menu()" id="cube-3D" class="menu-cube hover-anim-on">
-            <!--
+        <div onClick="toggle_top_menu()" id="cube-3D" class="menu-cube hover-animation">
+            
             <div class="front">
                 <p>Menu</p>
             </div>
-            -->
+            
 
             <div class="back"></div>
             <div class="left"></div>
