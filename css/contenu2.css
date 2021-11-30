@@ -1,3 +1,50 @@
+.part{
+    height: 100vw;
+}
+.part2{
+    height: 60vw;
+}
+#lieu p, #lieu h2, h1{
+    margin-bottom: 20px;
+}
+#lieu div{
+    display: flex;
+    flex-wrap: wrap;
+}
+#lieu div > section {
+    width: 50%;
+    margin-bottom: 20px;
+}
+#lieu img{
+    width: 500px;
+}
+#lieu span{
+    display: flex;
+    justify-content: center;
+}
+#lieu iframe{
+    width: 700;
+    height: 500;
+}
+
+/*Début parti déplacement*/
+.transport{
+    display: flex;
+    justify-content: space-around;
+}
 .transport img{
-    width: 50px;
+    width: 100px;
+    height: 100px;
+}
+.pictures img{
+    width: 400px;
+}
+.description{
+    width: 80vw;
+    height: 50%;
+    overflow: hidden;
+}
+.description > article{
+    width: 100%;
+    height: 100%;
 }
