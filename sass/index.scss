@@ -19,16 +19,13 @@ body {
 }
 
 main {
-    max-width: 100vw;
+    width: 70vw;
     min-height: 100vh;
 
-    display: flex;
-    justify-content: center;
+    // Créer de l'espace
+    margin-left: max(11rem, 13vw);
 
-    margin-right: 13vw;
-    margin-left: 13vw;
-
-    padding-right: 2.5vw;
+    // Garder un bord par rapport au contenu
     padding-left: 2.5vw;
 }
 
@@ -54,13 +51,13 @@ nav.sub-left-menu {
     position: fixed;
     top: 0;
     left: 0;
-    transform: translateX(-85%);
+    transform: translateX(-11.5rem);
 
     background: var(--text-color);
     opacity: 0.2;
 
     transition: 0.5s cubic-bezier(.16,.77,.9,.88);
-    transition-property: transform border-radius opacity;
+    transition-property: transform border-radius, opacity;
 
     border-radius: 0 90% 90% 0;
 
@@ -107,7 +104,7 @@ nav.sub-left-menu {
                 transition: 0.5s;
             }
             & a:hover {
-                text-shadow: 0 0 2px var(--secondary-color);
+                text-shadow: 0 0 3px var(--secondary-color);
             }
 
             // Barre verte en dessous
@@ -125,10 +122,10 @@ nav.sub-left-menu {
 
                 transform: scaleX(0);
 
-                animation: bouncy-bar-return 0.6s cubic-bezier(.83,1.19,.69,.85);
+                animation: bouncy-bar-return 0.45s cubic-bezier(.83,1.19,.69,.85);
             }
             & a:hover::after {
-                animation: bouncy-bar 0.6s forwards cubic-bezier(.83,1.19,.69,.85);
+                animation: bouncy-bar 0.45s forwards cubic-bezier(.83,1.19,.69,.85);
             }
         }
     }
@@ -176,6 +173,8 @@ nav.sub-left-menu {
 section.content {
     // Deuxième plan
     z-index: 25;
+
+    width: 100%;
 }
 
 
@@ -189,7 +188,7 @@ nav.top-menu {
 nav.top-menu {
     position: fixed;
     top: 0;
-    right: 3.25rem;
+    right: 3rem;
 
     width: 9rem;
     height: calc(100vh - 2 * var(--nav-margin-top-bottom));
@@ -203,7 +202,7 @@ nav.top-menu {
     // Définir les variables
     --cube-lenght: 70px;
     --half-cube-lenght: calc(var(--cube-lenght) / 2);
-    --nav-margin-top-bottom: 8vh;
+    --nav-margin-top-bottom: 6rem;
 
     // Placement des liens
     & ul {
@@ -234,15 +233,75 @@ nav.top-menu {
         // Par défaut
         opacity: 0;
         visibility: hidden;
-        transition: 1.5s;
-        transition-delay: 1.75s;
 
         & a {
             text-decoration: none;
             color: var(--text-color);
             text-align: center;
-            background-color: var(--secondary-color);
-            padding: 0.5rem;
+            text-shadow: 0 0 15px var(--secondary-color);
+
+            transition: 0.5s cubic-bezier(.81,-0.21,.49,.93);
+        }
+
+        & button {
+            position: relative;
+
+            width: 100%;
+            height: 100%;
+
+            background: none;
+            border: none;
+
+            cursor: pointer;
+
+            & p {
+                color: var(--text-color);
+                font-family: 'Roboto Mono', monospace;
+                font-size: 1rem;
+                letter-spacing: 3px;
+
+                transition: 0.1s;
+            }
+
+            &::after, &::before {
+                position: absolute;
+                content: '';
+
+                transition: 0.5s;
+
+                width: 100%;
+                height: .5rem;
+
+                background-color: var(--complementary-color);
+                border-radius: .25rem;
+            }
+
+            &::before {
+                right: 0;
+                top: 25%;
+                transform: translateY(-50%);
+                transform-origin: left;
+            }
+            &::after {
+                left: 0;
+                bottom: 25%;
+                transform: translateY(50%);
+                transform-origin: right;
+            }
+        }
+
+        & button:hover {
+            &::before {
+                transform: translateY(-50%) rotate(-45deg) translateX(20.7107%);
+                top: 100%;
+            }
+            &::after {
+                transform: translateY(50%) rotate(45deg) translateX(-20.7107%);
+                bottom: 0;
+            }
+            & p {
+                opacity: 0;
+            }
         }
     }
 
@@ -276,8 +335,6 @@ nav.top-menu {
 
             position: absolute;
             top: 0;
-            
-            --delay-faces: 100ms;
 
             transition: .45s cubic-bezier(.17,.67,.83,.67);
 
@@ -354,27 +411,23 @@ nav.top-menu {
                 display: none;
             }
             &.back {
-                animation: replace-back 2s forwards;
+                animation: replace-back 1.7s forwards;
             }
             &.left {
                 transform-origin: center;
-                animation: replace-left 2s forwards;
-                animation-delay: calc(var(--delay-faces) * 3);
+                animation: replace-left 1.7s forwards;
             }
             &.right {
                 transform-origin: center;
-                animation: replace-right 2s forwards;
-                animation-delay: calc(var(--delay-faces) * 2);
+                animation: replace-right 1.7s forwards;
             }
             &.top {
                 transform-origin: center;
-                animation: replace-top 2s forwards;
-                animation-delay: calc(var(--delay-faces) * 4);
+                animation: replace-top 1.7s forwards;
             }
             &.bottom {
                 transform-origin: center;
-                animation: replace-bottom 2s forwards;
-                animation-delay: calc(var(--delay-faces) * 1);
+                animation: replace-bottom 1.7s forwards;
             }
         }
 
@@ -385,22 +438,37 @@ nav.top-menu {
     }
 
     & div.menu-on + ul > li {
-        opacity: 1;
         visibility: visible;
+        animation: 1.5s spawn-txt forwards;
+        animation-delay: 1.75s;
 
         //Mettre au premier plan
         z-index: 55;
 
-        & a {
-            background: linear-gradient(transparent, var(--secondary-color), transparent);
+        & a:hover {
+            text-shadow: 0 0 15px var(--complementary-color);
+            background-color: var(--secondary-color);
+            box-shadow: 0 0 4px var(--complementary-color), inset 0 0 3px var(--complementary-color);
 
-            border-radius: 2rem;
-            box-shadow: 0 0 3px var(--secondary-color);
+            border-radius: 0.3rem;
+            padding: .25rem 1rem;
+
+            letter-spacing: 4px;
         }
     }
 }
 
+// ----------- Pour le texte des liens du Menu principal
+@keyframes spawn-txt {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 
+// --------------- Pour les faces du Menu principal
 @keyframes replace-back {
     from {
         position: absolute;
@@ -480,7 +548,7 @@ nav.top-menu {
         transform: translateZ(calc( -1 * var(--half-cube-lenght))) translateY(calc(-1 * var(--half-cube-lenght))) rotateX(105deg) rotateZ(45deg);
     }
     55% {
-        transform: translateZ(var(--half-cube-lenght)) translateY(55vh) rotateX(105deg) rotateZ(180deg);
+        transform: translateZ(var(--half-cube-lenght)) translateX(0) translateY(55vh) rotateX(105deg) rotateZ(180deg);
         opacity: 0;
         position: absolute;
     }

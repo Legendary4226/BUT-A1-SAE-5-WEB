@@ -1,11 +1,12 @@
+<!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BUT Informatique Lyon1</title>
     <link rel="stylesheet" href="css/colors.css">
     <link rel="stylesheet" href="sass/index.css">
+    <link rel="stylesheet" href="sass/responsive.css">
     <link rel="stylesheet" href="css/footer.css">
 
     <?php
@@ -33,7 +34,6 @@
 
     <script src="js/top-menu.js"></script>
 </head>
-
 <body>
 
     <!-- Menu fixe pour naviguer entre pages -->
@@ -61,13 +61,15 @@
                 <a href="?page=arround">Autour de l'IUT</a>
             </li>
             <li>
-                <a href="?page=but">Le BUT Info</a>
+                <a href="?page=but">Le BUT Informatique</a>
             </li>
             <li>
                 <a href="?page=404">Formulaire</a>
             </li>
             <li>
-                <a href="?page=error404">Page d'erreur</a>
+                <button onclick="toggle_top_menu()">
+                    <p>Fermer</p>
+                </button>
             </li>
         </ul>
     </nav>
@@ -75,9 +77,8 @@
     <main>
         <!-- Menu de gauche pour naviguer sur le contenu -->
         <nav class="sub-left-menu">
-            <h1>
-                Navigation
-            </h1>
+            <h1>Navigation</h1>
+
             <?php
             if (isset($_GET['page'])) {
                 switch ($_GET['page']) {
@@ -145,5 +146,4 @@
     }
     ?>
 </body>
-
 </html>

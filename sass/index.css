@@ -13,17 +13,9 @@ body {
 }
 
 main {
-  max-width: 100vw;
+  width: 70vw;
   min-height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-right: 13vw;
-  margin-left: 13vw;
-  padding-right: 2.5vw;
+  margin-left: max(11rem, 13vw);
   padding-left: 2.5vw;
 }
 
@@ -63,16 +55,16 @@ nav.sub-left-menu {
   position: fixed;
   top: 0;
   left: 0;
-  -webkit-transform: translateX(-85%);
-          transform: translateX(-85%);
+  -webkit-transform: translateX(-11.5rem);
+          transform: translateX(-11.5rem);
   background: var(--text-color);
   opacity: 0.2;
   -webkit-transition: 0.5s cubic-bezier(0.16, 0.77, 0.9, 0.88);
   transition: 0.5s cubic-bezier(0.16, 0.77, 0.9, 0.88);
-  -webkit-transition-property: -webkit-transform border-radius opacity;
-  transition-property: -webkit-transform border-radius opacity;
-  transition-property: transform border-radius opacity;
-  transition-property: transform border-radius opacity, -webkit-transform border-radius opacity;
+  -webkit-transition-property: opacity, -webkit-transform border-radius;
+  transition-property: opacity, -webkit-transform border-radius;
+  transition-property: transform border-radius, opacity;
+  transition-property: transform border-radius, opacity, -webkit-transform border-radius;
   border-radius: 0 90% 90% 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -132,7 +124,7 @@ nav.sub-left-menu ul li a {
   transition: 0.5s;
 }
 nav.sub-left-menu ul li a:hover {
-  text-shadow: 0 0 2px var(--secondary-color);
+  text-shadow: 0 0 3px var(--secondary-color);
 }
 nav.sub-left-menu ul li a::after {
   content: "";
@@ -144,12 +136,12 @@ nav.sub-left-menu ul li a::after {
   border-bottom: 3px solid var(--complementary-color);
   -webkit-transform: scaleX(0);
           transform: scaleX(0);
-  -webkit-animation: bouncy-bar-return 0.6s cubic-bezier(0.83, 1.19, 0.69, 0.85);
-          animation: bouncy-bar-return 0.6s cubic-bezier(0.83, 1.19, 0.69, 0.85);
+  -webkit-animation: bouncy-bar-return 0.45s cubic-bezier(0.83, 1.19, 0.69, 0.85);
+          animation: bouncy-bar-return 0.45s cubic-bezier(0.83, 1.19, 0.69, 0.85);
 }
 nav.sub-left-menu ul li a:hover::after {
-  -webkit-animation: bouncy-bar 0.6s forwards cubic-bezier(0.83, 1.19, 0.69, 0.85);
-          animation: bouncy-bar 0.6s forwards cubic-bezier(0.83, 1.19, 0.69, 0.85);
+  -webkit-animation: bouncy-bar 0.45s forwards cubic-bezier(0.83, 1.19, 0.69, 0.85);
+          animation: bouncy-bar 0.45s forwards cubic-bezier(0.83, 1.19, 0.69, 0.85);
 }
 @-webkit-keyframes bouncy-bar {
   from {
@@ -235,6 +227,7 @@ nav.sub-left-menu:hover h1, nav.sub-left-menu:hover ul {
 
 section.content {
   z-index: 25;
+  width: 100%;
 }
 
 nav.top-menu {
@@ -244,7 +237,7 @@ nav.top-menu {
 nav.top-menu {
   position: fixed;
   top: 0;
-  right: 3.25rem;
+  right: 3rem;
   width: 9rem;
   height: calc(100vh - 2 * var(--nav-margin-top-bottom));
   padding: var(--nav-margin-top-bottom) 0;
@@ -254,7 +247,7 @@ nav.top-menu {
           perspective-origin: center calc(var(--half-cube-lenght) + var(--nav-margin-top-bottom));
   --cube-lenght: 70px;
   --half-cube-lenght: calc(var(--cube-lenght) / 2);
-  --nav-margin-top-bottom: 8vh;
+  --nav-margin-top-bottom: 6rem;
 }
 nav.top-menu ul {
   position: absolute;
@@ -290,17 +283,69 @@ nav.top-menu ul > li {
   list-style-type: none;
   opacity: 0;
   visibility: hidden;
-  -webkit-transition: 1.5s;
-  transition: 1.5s;
-  -webkit-transition-delay: 1.75s;
-          transition-delay: 1.75s;
 }
 nav.top-menu ul > li a {
   text-decoration: none;
   color: var(--text-color);
   text-align: center;
-  background-color: var(--secondary-color);
-  padding: 0.5rem;
+  text-shadow: 0 0 15px var(--secondary-color);
+  -webkit-transition: 0.5s cubic-bezier(0.81, -0.21, 0.49, 0.93);
+  transition: 0.5s cubic-bezier(0.81, -0.21, 0.49, 0.93);
+}
+nav.top-menu ul > li button {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+nav.top-menu ul > li button p {
+  color: var(--text-color);
+  font-family: "Roboto Mono", monospace;
+  font-size: 1rem;
+  letter-spacing: 3px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+nav.top-menu ul > li button::after, nav.top-menu ul > li button::before {
+  position: absolute;
+  content: "";
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  width: 100%;
+  height: 0.5rem;
+  background-color: var(--complementary-color);
+  border-radius: 0.25rem;
+}
+nav.top-menu ul > li button::before {
+  right: 0;
+  top: 25%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+nav.top-menu ul > li button::after {
+  left: 0;
+  bottom: 25%;
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+nav.top-menu ul > li button:hover::before {
+  -webkit-transform: translateY(-50%) rotate(-45deg) translateX(20.7107%);
+          transform: translateY(-50%) rotate(-45deg) translateX(20.7107%);
+  top: 100%;
+}
+nav.top-menu ul > li button:hover::after {
+  -webkit-transform: translateY(50%) rotate(45deg) translateX(-20.7107%);
+          transform: translateY(50%) rotate(45deg) translateX(-20.7107%);
+  bottom: 0;
+}
+nav.top-menu ul > li button:hover p {
+  opacity: 0;
 }
 nav.top-menu div.menu-cube {
   position: relative;
@@ -333,7 +378,6 @@ nav.top-menu div.menu-cube div {
           box-shadow: 0 0 3px var(--text-color), 0 0 3px var(--text-color) inset;
   position: absolute;
   top: 0;
-  --delay-faces: 100ms;
   -webkit-transition: 0.45s cubic-bezier(0.17, 0.67, 0.83, 0.67);
   transition: 0.45s cubic-bezier(0.17, 0.67, 0.83, 0.67);
 }
@@ -417,40 +461,32 @@ nav.top-menu div.menu-on div.front {
   display: none;
 }
 nav.top-menu div.menu-on div.back {
-  -webkit-animation: replace-back 2s forwards;
-          animation: replace-back 2s forwards;
+  -webkit-animation: replace-back 1.7s forwards;
+          animation: replace-back 1.7s forwards;
 }
 nav.top-menu div.menu-on div.left {
   -webkit-transform-origin: center;
           transform-origin: center;
-  -webkit-animation: replace-left 2s forwards;
-          animation: replace-left 2s forwards;
-  -webkit-animation-delay: calc(var(--delay-faces) * 3);
-          animation-delay: calc(var(--delay-faces) * 3);
+  -webkit-animation: replace-left 1.7s forwards;
+          animation: replace-left 1.7s forwards;
 }
 nav.top-menu div.menu-on div.right {
   -webkit-transform-origin: center;
           transform-origin: center;
-  -webkit-animation: replace-right 2s forwards;
-          animation: replace-right 2s forwards;
-  -webkit-animation-delay: calc(var(--delay-faces) * 2);
-          animation-delay: calc(var(--delay-faces) * 2);
+  -webkit-animation: replace-right 1.7s forwards;
+          animation: replace-right 1.7s forwards;
 }
 nav.top-menu div.menu-on div.top {
   -webkit-transform-origin: center;
           transform-origin: center;
-  -webkit-animation: replace-top 2s forwards;
-          animation: replace-top 2s forwards;
-  -webkit-animation-delay: calc(var(--delay-faces) * 4);
-          animation-delay: calc(var(--delay-faces) * 4);
+  -webkit-animation: replace-top 1.7s forwards;
+          animation: replace-top 1.7s forwards;
 }
 nav.top-menu div.menu-on div.bottom {
   -webkit-transform-origin: center;
           transform-origin: center;
-  -webkit-animation: replace-bottom 2s forwards;
-          animation: replace-bottom 2s forwards;
-  -webkit-animation-delay: calc(var(--delay-faces) * 1);
-          animation-delay: calc(var(--delay-faces) * 1);
+  -webkit-animation: replace-bottom 1.7s forwards;
+          animation: replace-bottom 1.7s forwards;
 }
 nav.top-menu div.menu-on div:not(.first) {
   -webkit-transform: translateY(0) rotateZ(0);
@@ -458,18 +494,40 @@ nav.top-menu div.menu-on div:not(.first) {
   position: static;
 }
 nav.top-menu div.menu-on + ul > li {
-  opacity: 1;
   visibility: visible;
+  -webkit-animation: 1.5s spawn-txt forwards;
+          animation: 1.5s spawn-txt forwards;
+  -webkit-animation-delay: 1.75s;
+          animation-delay: 1.75s;
   z-index: 55;
 }
-nav.top-menu div.menu-on + ul > li a {
-  background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(var(--secondary-color)), to(transparent));
-  background: linear-gradient(transparent, var(--secondary-color), transparent);
-  border-radius: 2rem;
-  -webkit-box-shadow: 0 0 3px var(--secondary-color);
-          box-shadow: 0 0 3px var(--secondary-color);
+nav.top-menu div.menu-on + ul > li a:hover {
+  text-shadow: 0 0 15px var(--complementary-color);
+  background-color: var(--secondary-color);
+  -webkit-box-shadow: 0 0 4px var(--complementary-color), inset 0 0 3px var(--complementary-color);
+          box-shadow: 0 0 4px var(--complementary-color), inset 0 0 3px var(--complementary-color);
+  border-radius: 0.3rem;
+  padding: 0.25rem 1rem;
+  letter-spacing: 4px;
 }
 
+@-webkit-keyframes spawn-txt {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes spawn-txt {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 @-webkit-keyframes replace-back {
   from {
     position: absolute;
@@ -497,7 +555,6 @@ nav.top-menu div.menu-on + ul > li a {
     opacity: 1;
   }
 }
-
 @keyframes replace-back {
   from {
     position: absolute;
@@ -641,8 +698,8 @@ nav.top-menu div.menu-on + ul > li a {
             transform: translateZ(calc( -1 * var(--half-cube-lenght))) translateY(calc(-1 * var(--half-cube-lenght))) rotateX(105deg) rotateZ(45deg);
   }
   55% {
-    -webkit-transform: translateZ(var(--half-cube-lenght)) translateY(55vh) rotateX(105deg) rotateZ(180deg);
-            transform: translateZ(var(--half-cube-lenght)) translateY(55vh) rotateX(105deg) rotateZ(180deg);
+    -webkit-transform: translateZ(var(--half-cube-lenght)) translateX(0) translateY(55vh) rotateX(105deg) rotateZ(180deg);
+            transform: translateZ(var(--half-cube-lenght)) translateX(0) translateY(55vh) rotateX(105deg) rotateZ(180deg);
     opacity: 0;
     position: absolute;
   }
@@ -668,8 +725,8 @@ nav.top-menu div.menu-on + ul > li a {
             transform: translateZ(calc( -1 * var(--half-cube-lenght))) translateY(calc(-1 * var(--half-cube-lenght))) rotateX(105deg) rotateZ(45deg);
   }
   55% {
-    -webkit-transform: translateZ(var(--half-cube-lenght)) translateY(55vh) rotateX(105deg) rotateZ(180deg);
-            transform: translateZ(var(--half-cube-lenght)) translateY(55vh) rotateX(105deg) rotateZ(180deg);
+    -webkit-transform: translateZ(var(--half-cube-lenght)) translateX(0) translateY(55vh) rotateX(105deg) rotateZ(180deg);
+            transform: translateZ(var(--half-cube-lenght)) translateX(0) translateY(55vh) rotateX(105deg) rotateZ(180deg);
     opacity: 0;
     position: absolute;
   }

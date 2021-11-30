@@ -1,0 +1,42 @@
+@charset "UTF-8";
+/* Points communs entre la responsive intermédiaire et téléphones */
+@media (max-width: 1500px) {
+  nav.sub-left-menu {
+    width: 30rem;
+    -webkit-transform: translateX(calc(-100% + 2.5rem));
+            transform: translateX(calc(-100% + 2.5rem));
+    opacity: 0.8;
+    border-radius: 0;
+    -webkit-transition: 0.8s cubic-bezier(0.16, 0.77, 0.9, 0.88);
+    transition: 0.8s cubic-bezier(0.16, 0.77, 0.9, 0.88);
+  }
+  nav.sub-left-menu::after {
+    position: absolute;
+    content: "→";
+    left: 100%;
+    top: 0;
+    width: 3rem;
+    height: 1rem;
+    padding-bottom: 1rem;
+    background-color: var(--text-color);
+    color: var(--complementary-color);
+    font-size: 2.5rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  nav.sub-left-menu:hover {
+    border-radius: 0;
+    opacity: 1;
+  }
+  nav.sub-left-menu:hover::after {
+    content: "←";
+  }
+}
+/*# sourceMappingURL=responsive.css.map */
