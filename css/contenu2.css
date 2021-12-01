@@ -1,5 +1,6 @@
 .part{
     height: 100vw;
+    margin: 20px;
 }
 .part2{
     height: 60vw;
@@ -7,11 +8,11 @@
 #lieu p, #lieu h2, h1{
     margin-bottom: 20px;
 }
-#lieu div{
+.lieux{
     display: flex;
     flex-wrap: wrap;
 }
-#lieu div > section {
+.lieux > div {
     width: 50%;
     margin-bottom: 20px;
 }
@@ -23,8 +24,8 @@
     justify-content: center;
 }
 #lieu iframe{
-    width: 700;
-    height: 500;
+    width: 700px;
+    height: 500px;
 }
 
 /*Début parti déplacement*/
@@ -44,7 +45,7 @@
     height: 50%;
     overflow: hidden;
 }
-.description > article{
+.description > div{
     width: 100%;
     height: 100%;
 }

@@ -1,11 +1,12 @@
+<!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BUT Informatique Lyon1</title>
     <link rel="stylesheet" href="css/colors.css">
     <link rel="stylesheet" href="sass/index.css">
+    <link rel="stylesheet" href="sass/responsive.css">
     <link rel="stylesheet" href="css/footer.css">
 
     <?php
@@ -33,54 +34,51 @@
 
     <script src="js/top-menu.js"></script>
 </head>
-
 <body>
 
     <!-- Menu fixe pour naviguer entre pages -->
     <nav class="top-menu">
-            <div id="slide-menu">
-                <ul>
-                    <li>
-                           
-                    </li>
-                    <li>
-                        
-                    </li>
-                    <li>
-                        
-                    </li>
-                    <li>
-                        
-                    </li>
-                </ul>
+
+        <div onClick="toggle_top_menu()" id="cube-3D" class="menu-cube hover-animation">
+            
+            <div class="front">
+                <p>Menu</p>
             </div>
-            <div class="button-menu">
-                <div onClick="toggle_top_menu()" id="cube-3D" class="menu-cube">
-                    <div class="front">
-                        <p>Menu</p>
-                    </div>
-                    <div class="back">
-                        <a href="?page=404">Formulaire</a>
-                    </div>
-                    <div class="left">
-                        <a href="?page=index">But en général</a> 
-                    </div>
-                    <div class="right">
-                        <a href="?page=arround">Autour de l'IUT</a>
-                    </div>
-                    <div class="top">
-                        <a href="?page=but">Le BUT Informatique</a>
-                    </div>
-                    <div class="bottom">
-                    
-                    </div>
-                </div>
-            </div>
-        </nav>
+            
+
+            <div class="back"></div>
+            <div class="left"></div>
+            <div class="right"></div>
+            <div class="top"></div>
+            <div class="bottom"></div>
+        </div>
+
+        <ul>
+            <li>
+                <a href="?page=index">But en général</a> 
+            </li>
+            <li>
+                <a href="?page=arround">Autour de l'IUT</a>
+            </li>
+            <li>
+                <a href="?page=but">Le BUT Informatique</a>
+            </li>
+            <li>
+                <a href="?page=404">Formulaire</a>
+            </li>
+            <li>
+                <button onclick="toggle_top_menu()">
+                    <p>Fermer</p>
+                </button>
+            </li>
+        </ul>
+    </nav>
 
     <main>
         <!-- Menu de gauche pour naviguer sur le contenu -->
         <nav class="sub-left-menu">
+            <h1>Navigation</h1>
+
             <?php
             if (isset($_GET['page'])) {
                 switch ($_GET['page']) {
@@ -148,5 +146,4 @@
     }
     ?>
 </body>
-
 </html>

@@ -11,7 +11,7 @@
 
 
 body {
-    background-color: var(--main-color);
+    background-color: var(--secondary-color);
     overflow-x: hidden;
 
     font-family: 'Roboto Mono', monospace;
@@ -19,206 +19,572 @@ body {
 }
 
 main {
-    max-width: 100vw;
+    width: 70vw;
     min-height: 100vh;
 
-    display: flex;
-    justify-content: center;
+    // Créer de l'espace
+    margin-left: max(11rem, 13vw);
 
-    padding-right: 15vw;
-    padding-left: 15vw;
+    // Garder un bord par rapport au contenu
+    padding-left: 2.5vw;
 }
 
 
-
+@keyframes show-left-submenu {
+    from {
+        box-shadow: 0 0 0px var(--text-color);
+    }
+    10% {
+        box-shadow: 0 0 15px var(--text-color);
+    }
+    20% {
+        box-shadow: 0 0 0px var(--text-color);
+    }
+}
 nav.sub-left-menu {
+    //Au premier plan
+    z-index: 50;
+
     height: 100vh;
-    width: 15vw;
+    width: 15rem;
 
     position: fixed;
+    top: 0;
     left: 0;
-    transform: translateX(-80%);
+    transform: translateX(-11.5rem);
 
-    background-color: var(--secondary-color);
+    background: var(--text-color);
+    opacity: 0.2;
 
-    transition: all 0.8s;
+    transition: 0.5s cubic-bezier(.16,.77,.9,.88);
+    transition-property: transform border-radius, opacity;
 
-    border-radius: 0 20% 20% 0;
+    border-radius: 0 90% 90% 0;
 
-    &:hover {
-        transform: translateX(0);
-        border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & h1, ul {
+        opacity: 0;
+        transition: opacity 0.25s;
+        // Effet d'apparition soudaine du texte
+        transition-delay: 0.25s;
     }
-    &:hover + section.content {
-        transform: translateX(10%);
+
+    & h1 {
+        margin: 2rem 0 2rem 0;
+        color: var(--main-color);
     }
-}
 
-section.content {
-    transition: transform 0.8s;
-}
+    & ul {
+        width: 100%;
+        height: 80%;
 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
 
-nav.top-menu {
-    z-index: 30;
-
-    & #slide-menu {
-        position: fixed;
-        top: 75px;
-        right: 0;
-
-        width: 60vw;
-        height: 70px;
-
-        transform: translateX(100%) translateY(-50%);
-        
-        background-color: var(--complementary-color);
-
-        transition: all 1s;
-
-        & ul {
+        & li {
             display: flex;
-            justify-content: space-around;
-            align-items: center;
+            justify-content: center;
+            text-align: center;
+            // Espacer les lignes
+            line-height: 1.3;
 
-            height: 100%;
+            // Placer les pseudo éléments en fonction de leur parent
+            position: relative;
 
-            & li {
-                list-style-type: none;
+            & a {
+                text-decoration: none;
+                color: var(--secondary-color);
+
+                padding-top: 1rem;
+                transition: 0.5s;
+            }
+            & a:hover {
+                text-shadow: 0 0 3px var(--secondary-color);
+            }
+
+            // Barre verte en dessous
+            & a::after {
+                content: '';
+                display: block;
+
+                position: absolute;
+                top: 100%;
+
+                padding-top: 10px;
+
+                width: 100%;
+                border-bottom: 3px solid var(--complementary-color);
+
+                transform: scaleX(0);
+
+                animation: bouncy-bar-return 0.45s cubic-bezier(.83,1.19,.69,.85);
+            }
+            & a:hover::after {
+                animation: bouncy-bar 0.45s forwards cubic-bezier(.83,1.19,.69,.85);
             }
         }
     }
 
-    & #slide-menu.slide-menu-on {
-        transform: translateX(0) translateY(-50%);
+    @keyframes bouncy-bar {
+        from {
+            transform: scaleX(0);
+        }
+        50% {
+            transform: scaleX(1);
+        }
+        75% {
+            transform: scaleX(0.8);
+        }
+        to {
+            transform: scaleX(1);
+        }
+    }
+    @keyframes bouncy-bar-return {
+        from {
+            transform: scaleX(1);
+        }
+        50% {
+            transform: scaleX(0);
+        }
+        75% {
+            transform: scaleX(0.2);
+        }
+        to {
+            transform: scaleX(0);
+        }
+    }
+
+    &:hover {
+        transform: translateX(0);
+        border-radius: 0 1% 1% 0;
+        opacity: 0.6;
+
+        & h1, ul {
+            opacity: 1;
+        }
     }
 }
 
+section.content {
+    // Deuxième plan
+    z-index: 25;
 
-
-
-// Cube 3D
-@keyframes hover-cube {
-    
+    width: 100%;
 }
 
-nav.top-menu div.button-menu {
+
+nav.top-menu {
+    // Etre sûr que le menu sera devant le reste
+    z-index: 50;
+}
+
+
+// --------------------- Cube 3D
+nav.top-menu {
     position: fixed;
-    top: 75px;
-    right: 4rem;
-    transform: translateY(-50%);
+    top: 0;
+    right: 3rem;
 
-    height: 50px;
+    width: 9rem;
+    height: calc(100vh - 2 * var(--nav-margin-top-bottom));
+    padding: var(--nav-margin-top-bottom) 0;
 
-    border: none;
-    background-color: transparent;
-
+    // Définir la perspective pour le cube
     perspective: 800px;
-    perspective-origin: center;
+    perspective-origin: center calc(var(--half-cube-lenght) + var(--nav-margin-top-bottom));
+    // La moitier du cube + 5vh est 'l'exacte milieu de la position du cube
 
-    // Le cube
+    // Définir les variables
+    --cube-lenght: 70px;
+    --half-cube-lenght: calc(var(--cube-lenght) / 2);
+    --nav-margin-top-bottom: 6rem;
+
+    // Placement des liens
+    & ul {
+        position: absolute;
+        top: 0;
+        z-index: 49;
+
+        height: 100%;
+        width: 100%;
+
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    // Partie des liens
+    & ul > li {
+        height: var(--cube-lenght);
+        width: var(--cube-lenght);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        list-style-type: none;
+
+        // Par défaut
+        opacity: 0;
+        visibility: hidden;
+
+        & a {
+            text-decoration: none;
+            color: var(--text-color);
+            text-align: center;
+            text-shadow: 0 0 15px var(--secondary-color);
+
+            transition: 0.5s cubic-bezier(.81,-0.21,.49,.93);
+        }
+
+        & button {
+            position: relative;
+
+            width: 100%;
+            height: 100%;
+
+            background: none;
+            border: none;
+
+            cursor: pointer;
+
+            & p {
+                color: var(--text-color);
+                font-family: 'Roboto Mono', monospace;
+                font-size: 1rem;
+                letter-spacing: 3px;
+
+                transition: 0.1s;
+            }
+
+            &::after, &::before {
+                position: absolute;
+                content: '';
+
+                transition: 0.5s;
+
+                width: 100%;
+                height: .5rem;
+
+                background-color: var(--complementary-color);
+                border-radius: .25rem;
+            }
+
+            &::before {
+                right: 0;
+                top: 25%;
+                transform: translateY(-50%);
+                transform-origin: left;
+            }
+            &::after {
+                left: 0;
+                bottom: 25%;
+                transform: translateY(50%);
+                transform-origin: right;
+            }
+        }
+
+        & button:hover {
+            &::before {
+                transform: translateY(-50%) rotate(-45deg) translateX(20.7107%);
+                top: 100%;
+            }
+            &::after {
+                transform: translateY(50%) rotate(45deg) translateX(-20.7107%);
+                bottom: 0;
+            }
+            & p {
+                opacity: 0;
+            }
+        }
+    }
+
+
+    // Partie de l'animation (le cube 3D)
     & div.menu-cube {
         position: relative;
-        width: 50px;
-        height: 50px;
+        // Au millieu
+        left: calc(50% - var(--half-cube-lenght));
+        z-index: 50;
+        height: var(--cube-lenght);
+        width: var(--cube-lenght);
 
+        //Placer les enfants
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        align-items: center;
+
+        // Activer la 3D sur les éléments
         transform-style: preserve-3d;
-        transform-origin: center 25px;
-        transform: rotateY(-15deg) rotateX(10deg);
 
-        transition: all 1s;
+        transition: 1s;
 
         cursor: pointer;
 
-        // Les faces du cube
         & div {
+            width: var(--cube-lenght);
+            height: var(--cube-lenght);
+            box-shadow: 0 0 3px var(--text-color), 0 0 3px var(--text-color) inset;
+
             position: absolute;
-            width: 50px;
-            height: 50px;
+            top: 0;
 
-            transition: all 1s;
-
-            box-shadow: 0 0 4px var(--text-color), inset 0 0 4px var(--text-color);
+            transition: .45s cubic-bezier(.17,.67,.83,.67);
 
             &.front {
-                transform: translateZ(25px);
-
+                position: absolute;
+                transform: translateZ(var(--half-cube-lenght));
                 display: flex;
                 align-items: center;
                 justify-content: center;
             }
             &.back {
-                transform: translateZ(-25px) rotateY(180deg);
+                transform: translateZ(calc(-1 * var(--half-cube-lenght))) rotateY(180deg);
             }
             &.left {
-                transform: translateZ(-25px) rotateY(270deg);
+                transform: translateZ(calc( -1 * var(--half-cube-lenght))) rotateY(270deg);
                 transform-origin: center left;
             }
             &.right {
-                transform: translateZ(-25px) rotateY(90deg);
+                transform: translateZ(calc( -1 * var(--half-cube-lenght))) rotateY(90deg);
                 transform-origin: center right;
             }
             &.top {
-                transform: translateZ(-25px) rotateX(90deg);
+                transform: translateZ(calc( -1 * var(--half-cube-lenght))) rotateX(90deg);
                 transform-origin: center top;
             }
             &.bottom {
-                transform: translateZ(-25px) rotateX(270deg);
+                transform: translateZ(calc( -1 * var(--half-cube-lenght))) rotateX(-90deg);
                 transform-origin: center bottom;
             }
-
-            & a {
-                opacity: 0;
-                visibility: hidden;
-            }
         }
     }
 
-    // Le cube quand hover
-    & div.menu-cube:hover {
-        transform: rotateY(0deg) rotateX(0deg);
+    // C'est div.menu-cube qui est sélectionné, simplement une autre classe pour la supprimé quand le menu est actif
+    & div.hover-animation:hover {
         & div {
-            background-color: var(--complementary-color);
 
             &.front {
-
+                transform: translateZ(calc( 1.5 * var(--cube-lenght)));
+                letter-spacing: 3px;
             }
             &.back {
-                
+                transform: translateZ(calc(-1.5 * var(--half-cube-lenght))) rotateY(180deg) rotateZ(45deg);
             }
             &.left {
-                transform: translateZ(50px) rotateY(360deg) translateX(calc(-20vw + 4rem));
-                width: 5vw;
+                transform: translateZ(calc( -1 * var(--half-cube-lenght))) translateX(calc(-1 * var(--half-cube-lenght))) rotateY(255deg) rotateZ(45deg);
             }
             &.right {
-                
+                transform: translateZ(calc( -1 * var(--half-cube-lenght))) translateX(var(--half-cube-lenght)) rotateY(105deg) rotateZ(45deg);
             }
             &.top {
-                
+                transform: translateZ(calc( -1 * var(--half-cube-lenght))) translateY(calc(-1 * var(--half-cube-lenght))) rotateX(105deg) rotateZ(45deg);
             }
             &.bottom {
-                
+                transform: translateZ(calc( -1 * var(--half-cube-lenght))) translateY(var(--half-cube-lenght)) rotateX(-105deg) rotateZ(45deg);
             }
-
         }
-        & a {
-            opacity: 1;
-            visibility: visible;
-        }
-
     }
+
+
+    // Après le CLIC de l'utilisateur
     & div.menu-on {
-        transform: rotateX(0deg) rotateY(30deg) rotateZ(0deg);
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100%;
+
+        // Mettre au deuxième plan
+        z-index: 49;
 
         & div {
-            background-color: var(--complementary-color);
+            &.front {
+                opacity: 0;
+                display: none;
+            }
+            &.back {
+                animation: replace-back 1.7s forwards;
+            }
+            &.left {
+                transform-origin: center;
+                animation: replace-left 1.7s forwards;
+            }
+            &.right {
+                transform-origin: center;
+                animation: replace-right 1.7s forwards;
+            }
+            &.top {
+                transform-origin: center;
+                animation: replace-top 1.7s forwards;
+            }
+            &.bottom {
+                transform-origin: center;
+                animation: replace-bottom 1.7s forwards;
+            }
+        }
 
-            
+        & div:not(.first) {
+            transform: translateY(0) rotateZ(0);
+            position: static;
+        }
+    }
+
+    & div.menu-on + ul > li {
+        visibility: visible;
+        animation: 1.5s spawn-txt forwards;
+        animation-delay: 1.75s;
+
+        //Mettre au premier plan
+        z-index: 55;
+
+        & a:hover {
+            text-shadow: 0 0 15px var(--complementary-color);
+            background-color: var(--secondary-color);
+            box-shadow: 0 0 4px var(--complementary-color), inset 0 0 3px var(--complementary-color);
+
+            border-radius: 0.3rem;
+            padding: .25rem 1rem;
+
+            letter-spacing: 4px;
         }
     }
 }
 
-a {
-    text-decoration: none;
-    color: var(--text-color);
+// ----------- Pour le texte des liens du Menu principal
+@keyframes spawn-txt {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+// --------------- Pour les faces du Menu principal
+@keyframes replace-back {
+    from {
+        position: absolute;
+        opacity: 1;
+        transform: translateZ(calc(-1.5 * var(--half-cube-lenght))) rotateY(180deg) rotateZ(45deg);
+    }
+    55% {
+        transform: translateZ(var(--half-cube-lenght)) translateY(55vh) rotateY(180deg) rotateZ(180deg);
+        opacity: 0;
+        position: absolute;
+    }
+    56% {
+        position: static;
+        transform: scale(0) rotateZ(-20deg);
+    }
+    58% {
+        opacity: 0;
+    }
+    to {
+        transform: scale(1.3) rotateZ(0);
+        opacity: 1;
+    }
+}
+
+@keyframes replace-left {
+    from {
+        position: absolute;
+        opacity: 1;
+        transform: translateZ(calc( -1 * var(--half-cube-lenght))) translateX(calc(-1 * var(--half-cube-lenght))) rotateY(255deg) rotateZ(45deg);
+    }
+    55% {
+        transform: translateZ(var(--half-cube-lenght)) translateX(0) translateY(55vh) rotateY(0deg) rotateZ(180deg);
+        opacity: 0;
+        position: absolute;
+    }
+    56% {
+        position: static;
+        transform: scale(0) rotateZ(20deg);
+    }
+    58% {
+        opacity: 0;
+    }
+    to {
+        transform: scale(1.3) rotateZ(0);
+        opacity: 1;
+    }
+}
+
+@keyframes replace-right {
+    from {
+        position: absolute;
+        opacity: 1;
+        transform: translateZ(calc( -1 * var(--half-cube-lenght))) translateX(var(--half-cube-lenght)) rotateY(105deg) rotateZ(45deg);
+    }
+    55% {
+        transform: translateZ(var(--half-cube-lenght)) translateX(0) translateY(55vh) rotateY(0deg) rotateZ(180deg);
+        opacity: 0;
+        position: absolute;
+    }
+    56% {
+        position: static;
+        transform: scale(0) rotateZ(-20deg);
+    }
+    58% {
+        opacity: 0;
+    }
+    to {
+        transform: scale(1.3) rotateZ(0);
+        opacity: 1;
+    }
+}
+
+@keyframes replace-top {
+    from {
+        position: absolute;
+        opacity: 1;
+        transform: translateZ(calc( -1 * var(--half-cube-lenght))) translateY(calc(-1 * var(--half-cube-lenght))) rotateX(105deg) rotateZ(45deg);
+    }
+    55% {
+        transform: translateZ(var(--half-cube-lenght)) translateX(0) translateY(55vh) rotateX(105deg) rotateZ(180deg);
+        opacity: 0;
+        position: absolute;
+    }
+    56% {
+        position: static;
+        transform: scale(0) rotateZ(-20deg);
+    }
+    58% {
+        opacity: 0;
+    }
+    to {
+        transform: scale(1.3) rotateZ(0);
+        opacity: 1;
+    }
+}
+
+@keyframes replace-bottom {
+    from {
+        position: absolute;
+        opacity: 1;
+        transform: translateZ(calc( -1 * var(--half-cube-lenght))) translateY(var(--half-cube-lenght)) rotateX(-105deg) rotateZ(45deg);
+    }
+    55% {
+        transform: translateZ(var(--half-cube-lenght)) translateY(55vh) rotateX(-105deg) rotateZ(45deg);
+        opacity: 0;
+        position: absolute;
+    }
+    56% {
+        position: static;
+        transform: scale(0) rotateZ(-20deg);
+    }
+    58% {
+        opacity: 0;
+    }
+    to {
+        transform: scale(1.3) rotateZ(0);
+        opacity: 1;
+    }
 }
