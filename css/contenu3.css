@@ -21,21 +21,58 @@
     width: 200px;
     height: 200px;
     margin: 20px;
+
+    z-index: 1;
+
+    overflow: hidden;
+    transition: top 1s, z-index 0.5s, transform 0.5s;
+    transition-delay: 0, 1s, 1s;
+
+    background-color: var(--secondary-color);
 }
-.competences p::after{
-    content: '';
+.competences p:hover{
+    top: -50px;
+    transform: translateY(50px);
+    z-index:11;
+}
+
+.competences span {
+    position: relative;
+}
+
+.competences span > div {
     position: absolute;
-    bottom: 0;
+    top: 55%;
 
     width: 100%;
     height: 50%;
-    
-    background-color: var(--secondary-color);
-    filter: blur(150px);
+
     z-index: 10;
+    
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+}
+.competences p::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: skewX(45deg) translateX(150px);
+    transition: 0.5s;
+    opacity: 0;
+}
+.competences p:hover::before{
+    transform: skewX(45deg) translateX(-150px);
+    opacity: 1;
 }
 .matiere p{
     width: 150px;
     height: 150px;
     margin: 15px;
+}
+#edt img{
+    width: 1000px;
 }
