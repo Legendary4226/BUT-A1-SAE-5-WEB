@@ -1,7 +1,10 @@
 footer{
     display: flex;
     justify-content: space-around;
-    width: 100vw;
+
+    z-index: -1;
+
+    transition: 0.5s cubic-bezier(.16,.77,.9,.88);
 }
 footer section{
     display: flex;
