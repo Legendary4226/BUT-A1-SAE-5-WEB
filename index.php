@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="css/colors.css">
     <link rel="stylesheet" href="sass/index.css">
     <link rel="stylesheet" href="sass/responsive.css">
+    <link rel="stylesheet" href="sass/responsive-menu.css">
+    <link rel="stylesheet" href="sass/responsive-sub-left-menu.css">
     <link rel="stylesheet" href="css/footer.css">
 
     <?php
@@ -99,6 +101,8 @@
                 include("pages-sub-menus/sub1.html");
             }
             ?>
+
+            <button id="open-close-sub-left-menu" onclick="phone_tablet_left_menu()"></button>
         </nav>
 
 
@@ -127,23 +131,11 @@
             }
             ?>
         </section>
-        
-    </main>
 
-    <!-- Importation du FOOTER -->
-    <?php
-    if (isset($_GET['page'])) {
-        switch ($_GET['page']) {
-            case 'index':
-            case 'arround':
-            case 'but':
-            case 'question-form':
-                include("pages/footer.html");
-                break;
-        }
-    } else {
+        <!-- Importation du FOOTER -->
+        <?php
         include("pages/footer.html");
-    }
-    ?>
+        ?>
+    </main>
 </body>
 </html>

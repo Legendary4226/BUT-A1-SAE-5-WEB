@@ -1,0 +1,188 @@
+nav.sub-left-menu {
+    //Au premier plan
+    z-index: 45;
+
+    height: 100vh;
+    width: 12rem;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    background: var(--text-color);
+
+    transition: 0.5s cubic-bezier(.16,.77,.9,.88);
+    transition-property: transform border-radius, opacity;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & h1, ul {
+        opacity: 0;
+        transition: opacity 0.25s;
+        // Effet d'apparition soudaine du texte
+        transition-delay: 0.25s;
+    }
+
+    & h1 {
+        margin: 2rem 0 2rem 0;
+        color: var(--main-color);
+    }
+
+    & ul {
+        width: 100%;
+        height: 80%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+
+        & li {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            // Espacer les lignes
+            line-height: 1.3;
+
+            // Placer les pseudo éléments en fonction de leur parent
+            position: relative;
+
+            & a {
+                text-decoration: none;
+                color: var(--secondary-color);
+
+                padding-top: 1rem;
+                transition: 0.5s;
+            }
+            & a:hover {
+                text-shadow: 0 0 3px var(--secondary-color);
+            }
+
+            // Barre verte animée en dessous
+            & a::after {
+                content: '';
+                display: block;
+
+                position: absolute;
+                top: 100%;
+
+                padding-top: 10px;
+
+                width: 100%;
+                border-bottom: 3px solid var(--complementary-color);
+
+                transform: scaleX(0);
+
+                animation: bouncy-bar-return 0.45s cubic-bezier(.83,1.19,.69,.85);
+            }
+            & a:hover::after {
+                animation: bouncy-bar 0.45s forwards cubic-bezier(.83,1.19,.69,.85);
+            }
+        }
+    }
+}
+
+// Grand ecran
+@media (min-width: 1550px) {
+    nav.sub-left-menu {
+        transform: translateX(-9rem);
+    
+        opacity: 0.2;
+    
+        border-radius: 0 90% 90% 0;
+
+        // Sélectionner le bouton d'ouverture fermeture
+        & button {
+            display: none;
+        }
+
+        &:hover {
+            transform: translate(0);
+            opacity: 0.4;
+            border-radius: 0 4% 4% 0;
+
+            & h1, ul {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+
+// Points communs entre la responsive intermédiaire et téléphones
+@media (max-width: 1550px) {
+    nav.sub-left-menu {
+        // Agrandir la taille
+        width: 30vw;
+
+        // Ne plus laisser dépasser le sub-menu
+        transform: translateX(-100%);
+
+        opacity: 0.2;
+
+        & > button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: translateX(100%);
+
+            width: 4rem;
+            height: 4rem;
+            background: url("../img/closed-sub-left-menu-white.png") no-repeat;
+            background-size: 75%;
+            background-position: center;
+
+            border: none;
+            
+            cursor: pointer;
+        }
+    }
+
+    nav.sub-left-menu-on {
+        transform: translateX(0);
+
+        opacity: 0.5;
+
+        & h1, ul {
+            opacity: 1;
+        }
+    }
+
+    nav.sub-left-menu-on + section.content,
+    nav.sub-left-menu-on + section.content + footer {
+        transform: skewY(-25deg) translateX(30vw);
+    }
+}
+
+
+
+@keyframes bouncy-bar {
+    from {
+        transform: scaleX(0);
+    }
+    50% {
+        transform: scaleX(1);
+    }
+    75% {
+        transform: scaleX(0.8);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+@keyframes bouncy-bar-return {
+    from {
+        transform: scaleX(1);
+    }
+    50% {
+        transform: scaleX(0);
+    }
+    75% {
+        transform: scaleX(0.2);
+    }
+    to {
+        transform: scaleX(0);
+    }
+}

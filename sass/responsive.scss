@@ -1,58 +1,24 @@
 /* Points communs entre la responsive intermédiaire et téléphones */
-@media (max-width: 1500px) {
-    nav.sub-left-menu {
-        // Agrandir la taille
-        width: 30rem;
+@media (max-width: 1550px) {
+    main {
+        width: 93vw;
+        padding-left: 2vw;
+        margin: 0;
+    }
 
-        // Moins laisser dépasser le sub-menu
-        transform: translateX(calc(-100% + 2.5rem));
-
-        // Changer l'opacité par défaut
-        opacity: 0.8;
-
-        // Enlever la bordure arrondie
-        border-radius: 0;
-
-        transition: 0.8s cubic-bezier(.16,.77,.9,.88);
-    
-        &::after {
-            position: absolute;
-            content: '→';
-            left: 100%;
-            top: 0;
-
-            width: 3rem;
-            height: 1rem;
-            padding-bottom: 1rem;
-            background-color: var(--text-color);
-            color: var(--complementary-color);
-            font-size: 2.5rem;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        &:hover {
-            // Annuler les effets non voulu
-            border-radius: 0;
-            opacity: 1;
-
-            &::after {
-                content: '←';
-            }
-        }
+    section.content {
+        transition: transform 0.5s cubic-bezier(.16,.77,.9,.88);
     }
 }
 
 
 // Adaptation intermédiaire
-@media (min-width: 640px) and (max-width: 1500px) {
+@media (min-width: 640px) and (max-width: 1550px) {
 
 }
 
 
 // Adaptation téléphones
 @media (max-width: 640px) {
-
+    
 }
