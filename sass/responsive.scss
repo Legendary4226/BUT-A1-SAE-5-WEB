@@ -1,4 +1,11 @@
-/* Points communs entre la responsive intermédiaire et téléphones */
+// Grand ecran
+@media (min-width: 1550px) {
+    footer {
+        height: 300px;
+    }
+}
+
+// Points communs entre la responsive intermédiaire et téléphones
 @media (max-width: 1550px) {
     main {
         width: 93vw;
@@ -20,5 +27,7 @@
 
 // Adaptation téléphones
 @media (max-width: 640px) {
-    
+    footer {
+        flex-direction: column;
+    }
 }

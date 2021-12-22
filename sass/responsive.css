@@ -1,5 +1,8 @@
-@charset "UTF-8";
-/* Points communs entre la responsive intermédiaire et téléphones */
+@media (min-width: 1550px) {
+  footer {
+    height: 300px;
+  }
+}
 @media (max-width: 1550px) {
   main {
     width: 93vw;
@@ -12,6 +15,14 @@
     transition: -webkit-transform 0.5s cubic-bezier(0.16, 0.77, 0.9, 0.88);
     transition: transform 0.5s cubic-bezier(0.16, 0.77, 0.9, 0.88);
     transition: transform 0.5s cubic-bezier(0.16, 0.77, 0.9, 0.88), -webkit-transform 0.5s cubic-bezier(0.16, 0.77, 0.9, 0.88);
+  }
+}
+@media (max-width: 640px) {
+  footer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 /*# sourceMappingURL=responsive.css.map */
