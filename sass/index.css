@@ -65,4 +65,8 @@ section.content {
 nav.top-menu {
   z-index: 50;
 }
+
+h1 {
+  font-size: 2em;
+}
 /*# sourceMappingURL=index.css.map */
