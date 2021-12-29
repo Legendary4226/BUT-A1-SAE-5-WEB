@@ -1,0 +1,30 @@
+<form method="POST" action="traitement-form.php">
+    <fieldset>
+        <label for="surname">Nom: </label>
+        <input type="text" name="surname" placeholder="Nom" id="surname" required>
+        
+        <label for="first-name">Prénom: </label>
+        <input type="text" name="first-name" placeholder="Prénom" id="first-name" required>
+
+        <label for="email-input">Email: </label>
+        <input type="email" name="email" placeholder="example@example.com" id="email-input" required/>
+    </fieldset>
+
+    <label for="message">Message</label>
+    <textarea placeholder="Taper votre message" name="message" id="message" required></textarea>
+   
+    <p>Vitesse de réponse :</p>
+    <fieldset>
+        <label for="urgent">Urgent</label>
+        <input type="radio" name="importance" value="Urgent" id="urgent" required/>
+        <label for="neutre">Neutre</label>
+        <input type="radio" name="importance" value="Neutre" id="neutre" required/>
+        <label for="optionnel">Optionnel</label>
+        <input type="radio" name="importance" value="Optionnel" id="optionnel" required/>
+    </fieldset>
+    
+    
+    <input type="submit">
+    <input type="reset" value="Tout effacer">
+    
+</form>

@@ -1,0 +1,15 @@
+body {
+    height: 100vh;
+
+
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h1 {
+    font-size: 4.5em;
+    color: var(--complementary-color);
+
+    text-align: center;
+}

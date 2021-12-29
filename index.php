@@ -66,7 +66,7 @@
                 <a href="?page=but">Le BUT Informatique</a>
             </li>
             <li>
-                <a href="?page=404">Formulaire</a>
+                <a href="?page=question-form">Formulaire</a>
             </li>
             <li>
                 <button onclick="toggle_top_menu()">
@@ -94,7 +94,7 @@
                         include("pages-sub-menus/sub3.html");
                         break;
                     case 'question-form':
-                        //include("pages-sub-menus/");
+                        include("pages-sub-menus/sub-form.html");
                         break;
                 }
             } else {
