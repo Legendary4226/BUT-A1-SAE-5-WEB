@@ -66,7 +66,7 @@
                 <a href="?page=but">Le BUT Informatique</a>
             </li>
             <li>
-                <a href="?page=404">Formulaire</a>
+                <a href="?page=question-form">Formulaire</a>
             </li>
             <li>
                 <button onclick="toggle_top_menu()">
