@@ -120,7 +120,7 @@ nav.sub-left-menu {
         // Ne plus laisser dépasser le sub-menu
         transform: translateX(-100%);
 
-        opacity: 0.2;
+        opacity: 1;
 
         & > button {
             position: absolute;
@@ -130,11 +130,11 @@ nav.sub-left-menu {
 
             width: 4rem;
             height: 4rem;
-            background: url("../img/closed-sub-left-menu-white.png") no-repeat;
-            background-size: 75%;
+            background: url("../img/closed-sub-left-menu-white-filled.png") no-repeat;
+            background-size: 100%;
             background-position: center;
 
-            border: none;
+            box-shadow: 5px 0 10px var(--secondary-color);
             
             cursor: pointer;
         }
@@ -143,7 +143,7 @@ nav.sub-left-menu {
     nav.sub-left-menu-on {
         transform: translateX(0);
 
-        opacity: 0.5;
+        opacity: 0.6;
 
         & h1, ul {
             opacity: 1;
@@ -152,7 +152,9 @@ nav.sub-left-menu {
 
     nav.sub-left-menu-on + section.content,
     nav.sub-left-menu-on + section.content + footer {
-        transform: skewY(-25deg) translateX(30vw);
+        position: relative;
+        left: 30vw;
+        transform: scale(0.8);
     }
 }
 

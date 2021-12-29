@@ -17,16 +17,6 @@ main {
   min-height: 100vh;
   margin-left: max(13rem, 13vw);
 }
-main::before {
-  position: sticky;
-  top: 0;
-  content: "";
-  display: block;
-  width: 100vw;
-  height: 8rem;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, var(--secondary-color)), to(transparent));
-  background: linear-gradient(var(--secondary-color) 30%, transparent);
-}
 
 @-webkit-keyframes show-left-submenu {
   from {

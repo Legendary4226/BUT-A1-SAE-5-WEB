@@ -12,7 +12,6 @@ nav.top-menu {
           perspective: 800px;
   -webkit-perspective-origin: center calc(var(--half-cube-length) + var(--nav-margin-top-bottom));
           perspective-origin: center calc(var(--half-cube-length) + var(--nav-margin-top-bottom));
-  background: radial-gradient(var(--secondary-color) 10%, var(--secondary-color), transparent 40%);
 }
 
 @media (min-width: 1550px) {
@@ -293,7 +292,7 @@ nav.top-menu {
   nav.top-menu div.menu-cube {
     position: fixed;
     right: 3rem;
-    top: 3rem;
+    top: 2rem;
     z-index: 50;
     height: var(--cube-length);
     width: var(--cube-length);
@@ -332,12 +331,14 @@ nav.top-menu {
   nav.top-menu div.menu-cube div.back {
     -webkit-transform: translateZ(calc(-1 * var(--half-cube-length))) rotateY(180deg);
             transform: translateZ(calc(-1 * var(--half-cube-length))) rotateY(180deg);
+    background: var(--secondary-color);
   }
   nav.top-menu div.menu-cube div.left {
     -webkit-transform: translateZ(calc( -1 * var(--half-cube-length))) rotateY(270deg);
             transform: translateZ(calc( -1 * var(--half-cube-length))) rotateY(270deg);
     -webkit-transform-origin: center left;
             transform-origin: center left;
+    background: var(--secondary-color);
   }
   nav.top-menu div.menu-cube div.right {
     -webkit-transform: translateZ(calc( -1 * var(--half-cube-length))) rotateY(90deg);
@@ -350,6 +351,7 @@ nav.top-menu {
             transform: translateZ(calc( -1 * var(--half-cube-length))) rotateX(90deg);
     -webkit-transform-origin: center top;
             transform-origin: center top;
+    background: var(--secondary-color);
   }
   nav.top-menu div.menu-cube div.bottom {
     -webkit-transform: translateZ(calc( -1 * var(--half-cube-length))) rotateX(-90deg);

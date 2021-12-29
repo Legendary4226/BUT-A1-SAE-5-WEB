@@ -24,19 +24,6 @@ main {
 
     // Créer de l'espace
     margin-left: max(13rem, 13vw);
-
-    &::before {
-        position: sticky;
-        top: 0;
-        content: '';
-
-        display: block;
-
-        width: 100vw;
-        height: 8rem;
-
-        background: linear-gradient(var(--secondary-color) 30%, transparent);
-    }
 }
 
 

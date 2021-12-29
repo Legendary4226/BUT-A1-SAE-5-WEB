@@ -21,7 +21,9 @@
 
 // Adaptation intermédiaire
 @media (min-width: 640px) and (max-width: 1550px) {
-
+    footer {
+        flex-wrap: wrap;
+    }
 }
 
 
@@ -29,5 +31,18 @@
 @media (max-width: 640px) {
     footer {
         flex-direction: column;
+    }
+
+    main::before {
+        position: sticky;
+        top: 0;
+        content: '';
+
+        display: block;
+
+        width: 100vw;
+        height: 8rem;
+
+        background: linear-gradient(var(--secondary-color) 30%, transparent);
     }
 }

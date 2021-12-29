@@ -18,8 +18,6 @@ nav.top-menu {
     perspective-origin: center calc(var(--half-cube-length) + var(--nav-margin-top-bottom));
     // La moitier du cube + 5vh est 'l'exacte milieu de la position du cube
 
-    background:radial-gradient(var(--secondary-color) 10%, var(--secondary-color),transparent 40%);
-
 }
 
 // Adaptation spéciale sur grand ecran
@@ -298,7 +296,7 @@ nav.top-menu {
         & div.menu-cube {
             position: fixed;
             right: 3rem;
-            top: 3rem;
+            top: 2rem;
             // Au premier plan
             z-index: 50;
             height: var(--cube-length);
@@ -332,10 +330,14 @@ nav.top-menu {
                 }
                 &.back {
                     transform: translateZ(calc(-1 * var(--half-cube-length))) rotateY(180deg);
+
+                    background: var(--secondary-color);
                 }
                 &.left {
                     transform: translateZ(calc( -1 * var(--half-cube-length))) rotateY(270deg);
                     transform-origin: center left;
+
+                    background: var(--secondary-color);
                 }
                 &.right {
                     transform: translateZ(calc( -1 * var(--half-cube-length))) rotateY(90deg);
@@ -344,6 +346,8 @@ nav.top-menu {
                 &.top {
                     transform: translateZ(calc( -1 * var(--half-cube-length))) rotateX(90deg);
                     transform-origin: center top;
+
+                    background: var(--secondary-color);
                 }
                 &.bottom {
                     transform: translateZ(calc( -1 * var(--half-cube-length))) rotateX(-90deg);

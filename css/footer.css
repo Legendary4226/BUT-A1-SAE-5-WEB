@@ -15,8 +15,17 @@ footer section{
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+
+    margin-bottom: 2rem;
 }
-footer h1{
+footer section span {
+    width: 90%;
+
+    display: flex;
+    justify-content: space-between;
+}
+footer h1 {
+    font-size: 1.7em;
     margin-bottom: 10px;
     color: var(--complementary-color);
     border-bottom: 2px solid var(--complementary-color);
