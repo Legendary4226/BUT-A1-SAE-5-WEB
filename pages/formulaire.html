@@ -1,3 +1,4 @@
+<h1>Contactez nous</h1>
 <form method="POST" action="traitement-form.php">
     <fieldset>
         <label for="surname">Nom: </label>
@@ -9,22 +10,23 @@
         <label for="email-input">Email: </label>
         <input type="email" name="email" placeholder="example@example.com" id="email-input" required/>
     </fieldset>
-
-    <label for="message">Message</label>
+    
+    <label for="message">Message:</label>
     <textarea placeholder="Taper votre message" name="message" id="message" required></textarea>
    
-    <p>Vitesse de réponse :</p>
     <fieldset>
-        <label for="urgent">Urgent</label>
+        <p>Vitesse de réponse:</p>
+        <label for="urgent">Urgent: </label>
         <input type="radio" name="importance" value="Urgent" id="urgent" required/>
-        <label for="neutre">Neutre</label>
+        <label for="neutre">Neutre: </label>
         <input type="radio" name="importance" value="Neutre" id="neutre" required/>
-        <label for="optionnel">Optionnel</label>
+        <label for="optionnel">Optionnel: </label>
         <input type="radio" name="importance" value="Optionnel" id="optionnel" required/>
     </fieldset>
     
-    
-    <input type="submit">
-    <input type="reset" value="Tout effacer">
-    
+    <div class="bouton">
+        <input type="submit">
+        <input type="reset" value="Tout effacer">
+    </div>
+
 </form>
