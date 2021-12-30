@@ -8,6 +8,8 @@ nav.sub-left-menu {
   background: var(--text-color);
   -webkit-transition: 0.5s cubic-bezier(0.16, 0.77, 0.9, 0.88);
   transition: 0.5s cubic-bezier(0.16, 0.77, 0.9, 0.88);
+  -webkit-transform-origin: center right;
+          transform-origin: center right;
   -webkit-transition-property: opacity, -webkit-transform border-radius;
   transition-property: opacity, -webkit-transform border-radius;
   transition-property: transform border-radius, opacity;
@@ -103,7 +105,7 @@ nav.sub-left-menu ul li a:hover::after {
   nav.sub-left-menu:hover {
     -webkit-transform: translate(0);
             transform: translate(0);
-    opacity: 0.4;
+    opacity: 0.7;
     border-radius: 0 4% 4% 0;
   }
   nav.sub-left-menu:hover h1, nav.sub-left-menu:hover ul {
@@ -113,6 +115,8 @@ nav.sub-left-menu ul li a:hover::after {
 @media (max-width: 1550px) {
   nav.sub-left-menu {
     width: 30vw;
+    -webkit-transform-origin: center right;
+            transform-origin: center right;
     -webkit-transform: translateX(-100%);
             transform: translateX(-100%);
     opacity: 1;
@@ -133,10 +137,18 @@ nav.sub-left-menu ul li a:hover::after {
     cursor: pointer;
   }
 
+  nav.sub-left-menu + section.content,
+nav.sub-left-menu + section.content + footer {
+    -webkit-transform-origin: center right;
+            transform-origin: center right;
+  }
+
   nav.sub-left-menu-on {
+    -webkit-transform-origin: center right;
+            transform-origin: center right;
     -webkit-transform: translateX(0);
             transform: translateX(0);
-    opacity: 0.6;
+    opacity: 0.7;
   }
   nav.sub-left-menu-on h1, nav.sub-left-menu-on ul {
     opacity: 1;
@@ -144,10 +156,8 @@ nav.sub-left-menu ul li a:hover::after {
 
   nav.sub-left-menu-on + section.content,
 nav.sub-left-menu-on + section.content + footer {
-    position: relative;
-    left: 30vw;
-    -webkit-transform: scale(0.8);
-            transform: scale(0.8);
+    -webkit-transform: translateX(2vw) scaleX(0.7);
+            transform: translateX(2vw) scaleX(0.7);
   }
 }
 @-webkit-keyframes bouncy-bar {

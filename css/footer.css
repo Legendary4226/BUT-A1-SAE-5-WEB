@@ -4,11 +4,11 @@ footer{
 
     transition: 0.5s cubic-bezier(.16,.77,.9,.88);
 
-    margin-top: 5px;
+    margin-top: 4rem;
     border-top: 2px solid var(--complementary-color);
     padding-top: 5px;
 
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 footer section{
     display: flex;
