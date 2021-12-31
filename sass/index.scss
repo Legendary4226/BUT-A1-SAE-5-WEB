@@ -56,17 +56,45 @@ nav.top-menu {
 h1 {
     font-size: 2em;
 }
-h1:target {
-    animation: show-targeted 2s;
+section.content h2 {
+    padding-top: 4rem;
 }
 @keyframes show-targeted {
     from {
-        box-shadow: 0 0 0 var(--secondary-color);
+        text-shadow: 0 0 0px var(--text-color);
     }
     50% {
-        box-shadow: 0 0 5px var(--complementary-color);
+        text-shadow: 0 0 5px var(--text-color);
     }
     to {
-        box-shadow: 0 0 0 var(--secondary-color);
+        text-shadow: 0 0 0px var(--text-color);
     }
+}
+section.content h2:target {
+    position: relative;
+    width: fit-content;
+
+    animation: show-targeted 1.2s 1s;
+
+    overflow: hidden;
+}
+@keyframes slide-targeted {
+    to {
+        transform: translateX(100%);
+    }
+}
+section.content h2:target::before {
+    content: '';
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background: var(--text-color);
+
+    transform: translateX(-100%);
+    animation: slide-targeted 1.2s 1s;
 }

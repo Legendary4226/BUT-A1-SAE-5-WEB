@@ -6,12 +6,18 @@ section.content h2 {
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
-section.content div.lieux > article h3 {
+section.content .lieux > article h3 {
     color: var(--complementary-color);
     font-size: 1.5em;
     text-align: center;
 
     margin-bottom: 0.5rem;
+}
+
+section.content p {
+    width: 90%;
+    text-align: justify;
+    margin: 0.5rem;
 }
 
 
@@ -21,21 +27,39 @@ section.content div.lieux > article h3 {
 }
 .iframe-alentour-iut {
     width: 80%;
-    height: 300px;
+    min-height: 300px;
+}
+.iframe-example-itineary {
+    width: 90%;
+    min-height: 300px;
 }
 
-section.content img {
+
+section.content .lieux img {
     width: 80%;
 }
+section.content .transport img {
+    width: 20%;
+}
+section.content .description img,
+section.content .pictures img {
+    width: 25%;
+    margin: 0.5rem;
+}
+section.content .pictures img.logo-crous {
+    width: 200px;
+}
 
-section.content div.lieux {
+
+
+section.content .lieux {
     display: flex;
     flex-wrap: wrap;
 
     margin: 2rem 0;
 }
-section.content div.lieux > article {
-    width: 45%;
+section.content .lieux > article {
+    width: 44%;
 
     margin: 0.5rem 0.5rem;
     padding: 1rem 0.5rem;
@@ -50,59 +74,24 @@ section.content div.lieux > article {
 }
 
 
+section.content .description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+section.content .description > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
 
-/*
-OLD
+    margin-top: 2rem;
+    padding: 1rem 2rem;
 
-.part{
-    height: 120vw;
-    margin: 20px;
+    border-left: 3px var(--complementary-color) solid;
 }
-.part2{
-    height: 60vw;
-}
-#lieu p, #lieu h2, h1{
-    margin-bottom: 20px;
-}
-.lieux{
+section.content .bunch-of-images {
     display: flex;
     flex-wrap: wrap;
-}
-.lieux > div {
-    width: 50%;
-    margin-bottom: 20px;
-}
-#lieu img{
-    width: 500px;
-}
-#lieu span{
-    display: flex;
     justify-content: center;
 }
-#lieu iframe{
-    width: 700px;
-    height: 500px;
-}
-
-
-.transport{
-    display: flex;
-    justify-content: space-around;
-}
-.transport img{
-    width: 100px;
-    height: 100px;
-}
-.pictures img{
-    width: 400px;
-}
-.description{
-    width: 80vw;
-    height: 50%;
-    overflow: hidden;
-}
-.description > div{
-    width: 100%;
-    height: 100%;
-}
-*/

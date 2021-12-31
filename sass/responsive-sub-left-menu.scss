@@ -115,9 +115,6 @@ nav.sub-left-menu {
 // Points communs entre la responsive intermédiaire et téléphones
 @media (max-width: 1550px) {
     nav.sub-left-menu {
-        // Agrandir la taille
-        width: 30vw;
-
         transform-origin: center right;
         // Ne plus laisser dépasser le sub-menu
         transform: translateX(-100%);
@@ -157,13 +154,30 @@ nav.sub-left-menu {
             opacity: 1;
         }
     }
+}
 
+
+// Reponsive intermédiaire
+@media (min-width: 640px) and (max-width:1500px) {
+    nav.sub-left-menu {
+        width: 30vw;
+    }
     nav.sub-left-menu-on + section.content,
     nav.sub-left-menu-on + section.content + footer {
-        transform: translateX(2vw) scaleX(0.7);
+        transform: translateX(2vw) scaleX(0.7) !important;
     }
 }
 
+
+// Responsive téléphones
+@media (max-width: 640px) {
+    nav.sub-left-menu {
+        width: 50vw;
+    }
+    nav.sub-left-menu-on {
+        opacity: 0.9;
+    }
+}
 
 
 @keyframes bouncy-bar {

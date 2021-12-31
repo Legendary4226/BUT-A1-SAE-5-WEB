@@ -49,4 +49,24 @@
             align-items: center;
         }
     }
+
+    section.content div.lieux > article {
+        width: 90%;
+    }
+    section.content div.description > div {
+        width: 80%;
+    }
+
+    section.content div.competences {
+        padding: 0;
+        margin: 1rem 0;
+
+        & span {
+            width: 45%;
+            margin: 5px;
+        }
+    }
+    section.content div.matiere p {
+        width: 25%;
+    }
 }

@@ -114,7 +114,6 @@ nav.sub-left-menu ul li a:hover::after {
 }
 @media (max-width: 1550px) {
   nav.sub-left-menu {
-    width: 30vw;
     -webkit-transform-origin: center right;
             transform-origin: center right;
     -webkit-transform: translateX(-100%);
@@ -153,11 +152,25 @@ nav.sub-left-menu + section.content + footer {
   nav.sub-left-menu-on h1, nav.sub-left-menu-on ul {
     opacity: 1;
   }
+}
+@media (min-width: 640px) and (max-width: 1500px) {
+  nav.sub-left-menu {
+    width: 30vw;
+  }
 
   nav.sub-left-menu-on + section.content,
 nav.sub-left-menu-on + section.content + footer {
-    -webkit-transform: translateX(2vw) scaleX(0.7);
-            transform: translateX(2vw) scaleX(0.7);
+    -webkit-transform: translateX(2vw) scaleX(0.7) !important;
+            transform: translateX(2vw) scaleX(0.7) !important;
+  }
+}
+@media (max-width: 640px) {
+  nav.sub-left-menu {
+    width: 50vw;
+  }
+
+  nav.sub-left-menu-on {
+    opacity: 0.9;
   }
 }
 @-webkit-keyframes bouncy-bar {

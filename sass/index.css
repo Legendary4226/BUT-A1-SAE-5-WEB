@@ -61,38 +61,67 @@ h1 {
   font-size: 2em;
 }
 
-h1:target {
-  -webkit-animation: show-targeted 2s;
-          animation: show-targeted 2s;
+section.content h2 {
+  padding-top: 4rem;
 }
 
 @-webkit-keyframes show-targeted {
   from {
-    -webkit-box-shadow: 0 0 0 var(--secondary-color);
-            box-shadow: 0 0 0 var(--secondary-color);
+    text-shadow: 0 0 0px var(--text-color);
   }
   50% {
-    -webkit-box-shadow: 0 0 5px var(--complementary-color);
-            box-shadow: 0 0 5px var(--complementary-color);
+    text-shadow: 0 0 5px var(--text-color);
   }
   to {
-    -webkit-box-shadow: 0 0 0 var(--secondary-color);
-            box-shadow: 0 0 0 var(--secondary-color);
+    text-shadow: 0 0 0px var(--text-color);
   }
 }
 
 @keyframes show-targeted {
   from {
-    -webkit-box-shadow: 0 0 0 var(--secondary-color);
-            box-shadow: 0 0 0 var(--secondary-color);
+    text-shadow: 0 0 0px var(--text-color);
   }
   50% {
-    -webkit-box-shadow: 0 0 5px var(--complementary-color);
-            box-shadow: 0 0 5px var(--complementary-color);
+    text-shadow: 0 0 5px var(--text-color);
   }
   to {
-    -webkit-box-shadow: 0 0 0 var(--secondary-color);
-            box-shadow: 0 0 0 var(--secondary-color);
+    text-shadow: 0 0 0px var(--text-color);
   }
+}
+section.content h2:target {
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-animation: show-targeted 1.2s 1s;
+          animation: show-targeted 1.2s 1s;
+  overflow: hidden;
+}
+
+@-webkit-keyframes slide-targeted {
+  to {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+}
+
+@keyframes slide-targeted {
+  to {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+}
+section.content h2:target::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--text-color);
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  -webkit-animation: slide-targeted 1.2s 1s;
+          animation: slide-targeted 1.2s 1s;
 }
 /*# sourceMappingURL=index.css.map */
