@@ -1,27 +1,40 @@
-h1{
+section.content label{
+    color: var(--complementary-color);
+}
+section.content h1{
     text-align: center;
 }
-form{
+section.content form{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-fieldset{
+section.content fieldset{
     border: hidden;
     margin-top: 25px;
     margin-bottom: 25px;
 }
-form>fieldset{
+section.content form>fieldset{
     display: flex;
     flex-direction: column;
 }
-p{
+section.content p{
     margin-bottom: 10px;
+    color: var(--complementary-color);
 }
-.bouton{
+section.content .bouton{
     margin-bottom: 25px;
 }
-input[type="submit"],input[type="reset"]{
+section.content input[type="text"], section.content input[type="email"]{
+    width: 150px;
+    height: 25px;
+
+}
+section.content textarea{
+    width: 300px;
+    height: 200px;
+}
+section.content input[type="submit"], section.content input[type="reset"]{
     width: 100px;
     height: 25px;
     border:0 none;
