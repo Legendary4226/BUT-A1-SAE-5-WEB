@@ -72,14 +72,10 @@ nav.top-menu {
 
                 cursor: pointer;
 
-                & p {
-                    color: var(--text-color);
-                    font-family: 'Roboto Mono', monospace;
-                    font-size: 1rem;
-                    letter-spacing: 3px;
-
-                    transition: 0.1s;
-                }
+                color: var(--text-color);
+                font-family: 'Roboto Mono', monospace;
+                font-size: 1rem;
+                letter-spacing: 3px;
 
                 &::after, &::before {
                     position: absolute;

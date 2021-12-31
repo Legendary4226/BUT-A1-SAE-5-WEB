@@ -41,10 +41,10 @@
     <!-- Menu fixe pour naviguer entre pages -->
     <nav class="top-menu">
 
-        <div onClick="toggle_top_menu()" id="cube-3D" class="menu-cube hover-animation">
+        <div onClick="toggle_top_menu()" id="cube-3D" class="menu-cube hover-animation" role="presentation">
             
             <div class="front">
-                <p>Menu</p>
+                Menu
             </div>
             
 
@@ -57,20 +57,20 @@
 
         <ul>
             <li>
-                <a href="?page=index">But en général</a> 
+                <a href="?page=index" aria-label="Aller vers la première page : But en général">But en général</a> 
             </li>
             <li>
-                <a href="?page=arround">Autour de l'IUT</a>
+                <a href="?page=arround" aria-label="Aller vers la deuxième page : Autour de l'IUT">Autour de l'IUT</a>
             </li>
             <li>
-                <a href="?page=but">Le BUT Informatique</a>
+                <a href="?page=but" aria-label="Aller vers la troisième page : Le But Informatique">Le BUT Informatique</a>
             </li>
             <li>
-                <a href="?page=question-form">Formulaire</a>
+                <a href="?page=question-form"  aria-label="Aller vers la dernière page : Le formulaire pour des informations complémentaires">Formulaire</a>
             </li>
             <li>
-                <button onclick="toggle_top_menu()">
-                    <p>Fermer</p>
+                <button onclick="toggle_top_menu()" aria-label="Fermer visuellement le menu">
+                    Fermer
                 </button>
             </li>
         </ul>
@@ -102,12 +102,12 @@
             }
             ?>
 
-            <button id="open-close-sub-left-menu" onclick="phone_tablet_left_menu()"></button>
+            <button id="open-close-sub-left-menu" onclick="phone_tablet_left_menu()" aria-label="Ouvrir ou fermer visuellement le sous menu"></button>
         </nav>
 
 
         <!-- Importation du contenu -->
-        <section class="content">
+        <section class="content" role="main">
             <?php
             if (isset($_GET['page'])) {
                 switch ($_GET['page']) {

@@ -2,31 +2,34 @@
 <form method="POST" action="traitement-form.php">
     <fieldset>
         <label for="surname">Nom: </label>
-        <input type="text" name="surname" placeholder="Nom" id="surname" required>
+        <input type="text" name="surname" placeholder="Nom" id="surname" required aria-required="true">
         
         <label for="first-name">Prénom: </label>
-        <input type="text" name="first-name" placeholder="Prénom" id="first-name" required>
+        <input type="text" name="first-name" placeholder="Prénom" id="first-name" required aria-required="true">
 
         <label for="email-input">Email: </label>
-        <input type="email" name="email" placeholder="example@example.com" id="email-input" required/>
+        <input type="email" name="email" placeholder="example@example.com" id="email-input" required aria-required="true"/>
     </fieldset>
     
     <label for="message">Message:</label>
-    <textarea placeholder="Taper votre message" name="message" id="message" required></textarea>
-   
-    <fieldset>
-        <p>Vitesse de réponse:</p>
+    <textarea placeholder="Taper votre message" name="message" id="message" required aria-required="true"></textarea>
+    
+    <p>Vitesse de réponse:</p>
+    <fieldset class="radio-button">
         <label for="urgent">Urgent: </label>
-        <input type="radio" name="importance" value="Urgent" id="urgent" required/>
+        <input type="radio" name="importance" value="Urgent" id="urgent" required aria-required="true"/>
+    </fieldset>
+    <fieldset class="radio-button">
         <label for="neutre">Neutre: </label>
-        <input type="radio" name="importance" value="Neutre" id="neutre" required/>
+        <input type="radio" name="importance" value="Neutre" id="neutre" required aria-required="true"/>
+    </fieldset>
+    <fieldset class="radio-button">
         <label for="optionnel">Optionnel: </label>
-        <input type="radio" name="importance" value="Optionnel" id="optionnel" required/>
+        <input type="radio" name="importance" value="Optionnel" id="optionnel" required aria-required="true"/>
     </fieldset>
     
     <div class="bouton">
-        <input type="submit">
-        <input type="reset" value="Tout effacer">
+        <input type="submit" aria-label="Envoyer">
+        <input type="reset" value="Tout effacer" aria-label="Réinitialiser la saisie" >
     </div>
-
 </form>

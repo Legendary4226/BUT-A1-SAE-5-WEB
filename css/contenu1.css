@@ -22,3 +22,8 @@ section.content ul li {
     margin-left: 20px;
     list-style-type:  disclosure-closed;
 }
+
+.iframe-map-iut {
+    width: 100%;
+    min-height: 200px;
+}

@@ -1,40 +1,48 @@
-section.content label{
+section.content label {
     color: var(--complementary-color);
 }
-section.content h1{
+section.content h1 {
     text-align: center;
 }
-section.content form{
+section.content form {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-section.content fieldset{
+section.content fieldset {
     border: hidden;
     margin-top: 25px;
     margin-bottom: 25px;
 }
-section.content form>fieldset{
+section.content fieldset.radio-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    width: 120px;
+}
+section.content form > fieldset {
     display: flex;
     flex-direction: column;
 }
-section.content p{
+section.content p {
     margin-bottom: 10px;
     color: var(--complementary-color);
 }
-section.content .bouton{
+section.content .bouton {
     margin-bottom: 25px;
 }
-section.content input[type="text"], section.content input[type="email"]{
-    width: 150px;
+section.content input[type="text"], section.content input[type="email"] {
+    width: 200px;
     height: 25px;
-
+    margin: 0.25rem;
 }
-section.content textarea{
-    width: 300px;
+section.content textarea {
+    width: 400px;
     height: 200px;
+    margin: 0.25rem;
 }
-section.content input[type="submit"], section.content input[type="reset"]{
+section.content input[type="submit"], section.content input[type="reset"] {
     width: 100px;
     height: 25px;
     border:0 none;

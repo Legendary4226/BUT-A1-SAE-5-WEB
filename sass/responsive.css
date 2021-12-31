@@ -63,7 +63,7 @@
     padding: 0;
     margin: 1rem 0;
   }
-  section.content div.competences span {
+  section.content div.competences div {
     width: 45%;
     margin: 5px;
   }
