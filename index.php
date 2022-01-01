@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BUT Informatique Lyon1</title>
+
     <link rel="stylesheet" href="css/colors.css">
     <link rel="stylesheet" href="sass/index.css">
     <link rel="stylesheet" href="sass/responsive.css">
     <link rel="stylesheet" href="sass/responsive-menu.css">
     <link rel="stylesheet" href="sass/responsive-sub-left-menu.css">
     <link rel="stylesheet" href="css/footer.css">
+
+    <script src="js/top-menu.js"></script>
 
     <?php
     if (isset($_GET['page'])) {
@@ -34,10 +37,8 @@
     }
     ?>
 
-    <script src="js/top-menu.js"></script>
 </head>
 <body>
-
     <!-- Menu fixe pour naviguer entre pages -->
     <nav class="top-menu">
 
@@ -102,7 +103,7 @@
             }
             ?>
 
-            <button id="open-close-sub-left-menu" onclick="phone_tablet_left_menu()" aria-label="Ouvrir ou fermer visuellement le sous menu"></button>
+            <button id="open-close-sub-left-menu" onclick="phone_tablet_left_menu()" aria-label="Ouvrir ou fermer le sous menu"></button>
         </nav>
 
 
