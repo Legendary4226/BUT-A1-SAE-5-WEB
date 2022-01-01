@@ -152,6 +152,11 @@ nav.sub-left-menu + section.content + footer {
   nav.sub-left-menu-on h1, nav.sub-left-menu-on ul {
     opacity: 1;
   }
+  nav.sub-left-menu-on > button {
+    background: url("../img/opened-sub-left-menu-white.png") no-repeat;
+    background-size: 100%;
+    background-position: center;
+  }
 }
 @media (min-width: 640px) and (max-width: 1500px) {
   nav.sub-left-menu {

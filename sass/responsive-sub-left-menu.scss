@@ -153,6 +153,12 @@ nav.sub-left-menu {
         & h1, ul {
             opacity: 1;
         }
+
+        & > button {
+            background: url("../img/opened-sub-left-menu-white.png") no-repeat;
+            background-size: 100%;
+            background-position: center;
+        }
     }
 }
 
